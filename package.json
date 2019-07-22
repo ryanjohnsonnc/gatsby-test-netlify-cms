@@ -1,7 +1,7 @@
 {
-  "name": "XPO Digital",
+  "name": "xpo-digital",
   "description": "An application built using React, Gatsby and the Netlify CMS. Built on top of the 'gatsby-starter-netlify-cms' from Austin Cook.",
-  "version": "1",
+  "version": "1.0.0",
   "author": "Ryan Johnson",
   "dependencies": {
     "bulma": "^0.7.0",
