@@ -2,9 +2,9 @@ var proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Xpo Digital',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'A pivotal part of brand messaging. A medium for delivering targeted, unified, powerful content. That’s what digital signage is all about. Learn how to make your message matter.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
