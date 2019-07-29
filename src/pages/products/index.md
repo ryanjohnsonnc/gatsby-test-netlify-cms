@@ -97,12 +97,5 @@ pricing:
         - Unlimited varieties
       plan: Custom
       price: '??'
-    - description: This is a descriptions
-      items:
-        - Whatever you need
-        - Green or roasted beans
-        - Unlimited varieties
-      plan: Customer
-      price: '219'
 ---
 
