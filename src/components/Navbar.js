@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
@@ -42,7 +43,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+              <img src={logo} alt="xpodigital" className={`${this.state.navBarActiveClass}`} style={{ width: '169px' }} />
             </Link>
             {/* Hamburger menu */}
             <div
@@ -59,20 +60,20 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-            <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
+            <div className="navbar-start">
+              <Link className="navbar-item has-text-weight-bold" to="/about">
                 About
               </Link>
-              <Link className="navbar-item" to="/products">
+              <Link className="navbar-item has-text-weight-bold" to="/products">
                 Products
               </Link>
-              <Link className="navbar-item" to="/blog">
+              <Link className="navbar-item has-text-weight-bold" to="/blog">
                 Blog
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link className="navbar-item has-text-weight-bold" to="/contact">
                 Contact
               </Link>
-              <Link className="navbar-item" to="/contact/examples">
+              <Link className="navbar-item has-text-weight-bold" to="/contact/examples">
                 Form Examples
               </Link>
             </div>

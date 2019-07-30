@@ -8,6 +8,7 @@ import BlogRoll from '../components/BlogRoll'
 
 export const IndexPageTemplate = ({
   image,
+  stitle,
   title,
   heading,
   subheading,
@@ -40,8 +41,8 @@ export const IndexPageTemplate = ({
           className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
           style={{
             boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
+              'rgb(224, 24, 78) 0.5rem 0px 0px, rgb(224, 24, 78) -0.5rem 0px 0px',
+            backgroundColor: 'rgb(224, 24, 78)',
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
@@ -49,12 +50,16 @@ export const IndexPageTemplate = ({
         >
           {title}
         </h1>
+
+        <h2>
+          {stitle}
+        </h2>
         <h3
           className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
           style={{
             boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
+              'rgb(224, 24, 78) 0.5rem 0px 0px, rgb(224, 24, 78) -0.5rem 0px 0px',
+            backgroundColor: 'rgb(224, 24, 78)',
             color: 'white',
             lineHeight: '1',
             padding: '0.25em',
@@ -117,6 +122,7 @@ export const IndexPageTemplate = ({
 IndexPageTemplate.propTypes = {
   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   title: PropTypes.string,
+  stitle: PropTypes.string,
   heading: PropTypes.string,
   subheading: PropTypes.string,
   mainpitch: PropTypes.object,
@@ -134,6 +140,7 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
+        stitle={frontmatter.stitle}
         heading={frontmatter.heading}
         subheading={frontmatter.subheading}
         mainpitch={frontmatter.mainpitch}
@@ -159,6 +166,7 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
+        stitle
         image {
           childImageSharp {
             fluid(maxWidth: 2048, quality: 100) {

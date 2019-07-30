@@ -2,13 +2,25 @@
 
 // Config vars
 // Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000
 $kaldi-red-invert: #fff
 
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
+$pink: #E0184E;
+$kaldi-red: $pink
+
+//Themes Shades
+$black-ter: rgba(0, 0, 0, 0.94); // #0D0D0D
+$grey-darker: rgba(25, 23, 23, 1); // #191717
+$grey-dark: rgba(47, 47, 47, 1); // #2F2F2F
+$grey-light: rgba(149, 149, 149, 1); // ##959595
+$grey-lighter: rgba(221, 221, 221, 1); // #DDDDDD
+$white-ter: rgba(247, 247, 247, 1); // ##F7F7F7
+
+$primary: $pink
+$primary-invert: white
 $body-color: #333
-$black: #2b2523
+$black: #000
+
+$family-sans-serif: futura-pt, sans-serif; 
 
 .navbar .navbar-menu
   box-shadow:none !important
@@ -114,7 +126,7 @@ $menu-label-color: $white-ter
 
 // blog roll
 .blog-list-item.is-featured
-  background-color: #d6400033;
+  background-color: $pink;
 .blog-list-item header
   display: flex;
   margin-bottom: 1em;
@@ -125,6 +137,10 @@ $menu-label-color: $white-ter
 
 @import "~bulma"
 
+@import "../sass/utilities/flexbox"
+@import "../sass/utilities/mixins"
+
+@import "../sass/components/navbar"
 
 // responsiveness
 +tablet-only
@@ -138,3 +154,12 @@ $menu-label-color: $white-ter
     text-align: center;
     max-width: 70%;
     margin: 0 0 1em;
+
+
+// Heros
+.page-hero
+  & > .container 
+    padding-top: 150px
+    padding-bottom: 150px;
+  .title 
+    color: white;

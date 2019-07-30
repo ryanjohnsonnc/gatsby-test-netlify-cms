@@ -43,7 +43,10 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
-          - {label: "Second Title", name: "secondary-title", widget: "string"}
+          - {label: "SecondTitle", name: "stitle", widget: "string"}
+          - {label: "History", name: "history", widget: "text"}
+          - {label: "Advantages", name: "advantages", widget: "text"}
+          - {label: "Record", name: "record", widget: "text"}
           - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/products/index.md"
         label: "Products Page"
