@@ -1,0 +1,129 @@
+=filter-to-white()
+  filter: brightness(0) sepia(1) hue-rotate(-70deg) saturate(5);
+
+=transition($transition...)
+  -moz-transition: $transition
+  -o-transition: $transition
+  -webkit-transition: $transition
+  transition: $transition
+
+=transition-property($property...)
+  -moz-transition-property: $property
+  -o-transition-property: $property
+  -webkit-transition-property: $property
+  transition-property: $property
+
+=transition-duration($duration...)
+  -moz-transition-property: $duration
+  -o-transition-property: $duration
+  -webkit-transition-property: $duration
+  transition-property: $duration
+
+=transition-timing-function($timing...)
+  -moz-transition-timing-function: $timing
+  -o-transition-timing-function: $timing
+  -webkit-transition-timing-function: $timing
+  transition-timing-function: $timing
+
+=transition-delay($delay...)
+  -moz-transition-delay: $delay
+  -o-transition-delay: $delay
+  -webkit-transition-delay: $delay
+  transition-delay: $delay
+
+// generic transform
+=transform($transforms)
+  -moz-transform: $transforms
+  -o-transform: $transforms
+  -ms-transform: $transforms
+  -webkit-transform: $transforms
+  transform: $transforms
+
+// rotate
+=rotate($deg)
+  +transform(rotate(#{$deg}deg))
+
+// scale
+=scale($scale)
+  +transform(scale($scale))
+
+// translate
+=translate($x, $y)
+  +transform(translate($x, $y))
+
+// skew
+=skew($x, $y)
+  +transform(skew(#{$x}deg, #{$y}deg))
+
+//transform origin
+=transform-origin($origin)
+  moz-transform-origin: $origin
+  -o-transform-origin: $origin
+  -ms-transform-origin: $origin
+  -webkit-transform-origin: $origin
+  transform-origin: $origin
+
+// opacity
+=opacity($opacity)
+  opacity: $opacity
+
+  $opacity-ie: $opacity * 100
+
+  filter: alpha(opacity = $opacity-ie)
+
+  //IE8
+
+//Box Sizing
+=box-sizing($box-model)
+  -webkit-box-sizing: $box-model
+
+  // Safari <= 5
+  -moz-box-sizing: $box-model
+
+  // Firefox <= 19
+  box-sizing: $box-model
+
+/// Convert angle
+@function convert-angle($value, $unit)
+  $convertable-units: deg grad turn rad
+  $conversion-factors: 1 (10grad / 9deg) (1turn / 360deg) (3.1415926rad / 180deg)
+
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit)
+    @return $value / nth($conversion-factors, index($convertable-units, unit($value))) * nth($conversion-factors, index($convertable-units, $unit))
+
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`."
+
+/// Test if `$value` is an angle
+@function is-direction($value)
+  $is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value)
+  $is-angle: type-of($value) == "number" and index("deg" "grad" "turn" "rad", unit($value))
+
+  @return $is-direction or $is-angle
+
+/// Convert a direction to legacy syntax
+@function legacy-direction($value)
+  @if is-direction($value) == false
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction"
+
+  $conversion-map: (to top: bottom, to top right: bottom left, to right top: left bottom, to right: left, to bottom right: top left, to right bottom: left top, to bottom: top, to bottom left: top right, to left bottom: right top, to left: right, to left top: right bottom, to top left: bottom right)
+
+  @if map-has-key($conversion-map, $value)
+    @return map-get($conversion-map, $value)
+
+  @return 90deg - convert-angle($value, "deg")
+
+/// Mixin printing a linear-gradient
+=gradient($direction, $list)
+  background: -webkit-linear-gradient($direction, $list)
+  background: -moz-linear-gradient($direction, $list)
+  background: -o-linear-gradient($direction, $list)
+  background: linear-gradient($direction, $list)
+
+=box-sizing($box-model)
+  -webkit-box-sizing: $box-model
+
+  // Safari <= 5
+  -moz-box-sizing: $box-model
+
+  // Firefox <= 19
+  box-sizing: $box-model
