@@ -22,6 +22,12 @@ $black: #000
 
 $family-sans-serif: futura-pt, sans-serif; 
 
+$max-width: 1160px;
+$body-background-color: $white-ter;
+
+.container 
+  max-width: $max-width !important;
+
 .navbar .navbar-menu
   box-shadow:none !important
 
@@ -141,6 +147,7 @@ $menu-label-color: $white-ter
 @import "../sass/utilities/mixins"
 
 @import "../sass/components/navbar"
+@import "../sass/components/contentColumns"
 
 // responsiveness
 +tablet-only
@@ -163,3 +170,52 @@ $menu-label-color: $white-ter
     padding-bottom: 150px;
   .title 
     color: white;
+
+// About Page
+section.record 
+  position: relative
+  
+  &:after 
+    content: '';
+    display: block;
+    z-index: 1;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 25%;
+    background-color: $grey-lighter;
+
+  & > .container 
+    position: relative;
+    z-index: 2;
+    background-color: white;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  .column
+    .record_image 
+      display: block;
+      width: 300px;
+      height: 300px; 
+      background-image: url('../img/placeholder-image-long.jpg');
+      background-size: cover;
+      background-position: center center;
+    
+    &.record_content 
+      padding: 32px;
+
+  +desktop 
+    .column
+      position: relative;
+    
+      .record_image 
+        position: absolute;
+        top: 0px;
+        left: 32px;
+        right: 0;
+        bottom: -90px;
+        width: 100%;
+        height: auto;
+
+      &.record_content 
+        padding: 120px 90px;

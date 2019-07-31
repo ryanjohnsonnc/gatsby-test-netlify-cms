@@ -3,14 +3,16 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import ContentColumns from '../components/ContentColumns'
+import IndustryCards from '../components/IndustryCards'
 
-export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, content, contentComponent }) => {
+export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, cards, content, contentComponent }) => {
   const PageContent = contentComponent || Content
-
+  console.log(cards);
   return (
     <div>
       <section className="section has-background-black page-hero">
-        <div class="container">
+        <div className="container">
           <div className="columns">
             <div className="column is-desktop is-7">
               <div className="section has-text-white">
@@ -23,22 +25,32 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
         </div>
       </section>
       
-      <section className="section about">
+      <ContentColumns 
+        columnTwoContent={advantages}
+        columnOneContent={history}
+        className= "about"
+      />
+     
+
+      <section className="section record">
         <div className="container">
           <div className="columns">
             <div className="column is-desktop is-6">
-              <h2 className="title">History</h2>
-              <p>{history}</p>
+              <div class="record_image"></div>
             </div>
-            <div className="column is-desktop is-6">
-              <h2 className="title">Advantages</h2>
-              <p>{advantages}</p>
+            <div className="column is-desktop is-6 record_content">
+              <h2 className="title">Track Record</h2>
+              <p>{record}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section section--gradient">
+      <IndustryCards 
+        cards={cards}
+      />
+
+      <section className="section has-background-grey-lighter">
         <div className="container">
           <div className="columns">
             <div className="column is-10 is-offset-1">
@@ -68,6 +80,7 @@ AboutPageTemplate.propTypes = {
   record: PropTypes.string,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
+  cards: PropTypes.array,
 }
 
 const AboutPage = ({ data }) => {
@@ -83,6 +96,7 @@ const AboutPage = ({ data }) => {
         history= {post.frontmatter.history}
         advantages= {post.frontmatter.advantages}
         record= {post.frontmatter.record}
+        cards= {post.frontmatter.industryCards}
       />
     </Layout>
   )
@@ -104,6 +118,14 @@ export const aboutPageQuery = graphql`
         history
         advantages
         record
+        industryCards {
+          industry
+          industryShort
+          industryInfo {
+            industryLong
+  
+          }
+        }
       }
     }
   }
