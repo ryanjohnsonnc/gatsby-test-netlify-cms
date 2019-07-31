@@ -8,7 +8,7 @@ import IndustryCards from '../components/IndustryCards'
 
 export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, cards, content, contentComponent }) => {
   const PageContent = contentComponent || Content
-  console.log(cards);
+
   return (
     <div>
       <section className="section has-background-black page-hero">
@@ -123,7 +123,13 @@ export const aboutPageQuery = graphql`
           industryShort
           industryInfo {
             industryLong
-  
+            industryImage {
+              childImageSharp {
+                fluid(maxWidth: 120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
