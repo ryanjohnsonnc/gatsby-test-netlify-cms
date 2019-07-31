@@ -36,7 +36,7 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
         <div className="container">
           <div className="columns">
             <div className="column is-desktop is-6">
-              <div class="record_image"></div>
+              <div className="record_image"></div>
             </div>
             <div className="column is-desktop is-6 record_content">
               <h2 className="title">Track Record</h2>
