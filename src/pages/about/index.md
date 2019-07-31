@@ -26,7 +26,7 @@ record: >-
 industryCards:
   - industry: Industry Name
     industryInfo:
-      industryImage: /img/emmet.jpg
+      industryImage: /img/blog-index.jpg
       industryLong: Industry long description
     industryShort: Industry description
 ---
