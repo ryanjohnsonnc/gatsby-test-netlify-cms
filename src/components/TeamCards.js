@@ -9,34 +9,38 @@ class TeamCards extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
-            <div className="is-parent column is-3 teamCards_card" key={post.id}>
-              <div class="teamCards_card-wrapper">
-                {post.frontmatter.featuredimage ? (
-                  <div className="featured-thumbnail">
-                    <PreviewCompatibleImage
-                      imageInfo={{
-                        image: post.frontmatter.featuredimage,
-                        alt: `Picture of ${
-                          post.name
-                        }`,
-                      }}
-                    />
-                  </div>
-                ) : null}
+      <section className={`section c_teamCards has-background-grey-lighter`}>
+        <div className="container">
+          <div className="columns is-multiline">
+            {posts &&
+              posts.map(({ node: post }) => (
+                <div className="is-parent column is-3 teamCards_card" key={post.id}>
+                  <div class="card_wrapper">
+                    {post.frontmatter.featuredimage ? (
+                      <div className="card_image">
+                        <PreviewCompatibleImage
+                          imageInfo={{
+                            image: post.frontmatter.featuredimage,
+                            alt: `Picture of ${
+                              post.name
+                            }`,
+                          }}
+                        />
+                      </div>
+                    ) : 'no image'}
 
-                <Link
-                  className="title has-text-primary is-size-4"
-                  to='#'
-                >
-                  {post.frontmatter.name}
-                </Link>
-              </div>
-            </div>
-          ))}
-      </div>
+                    <Link
+                      className="title is-size-4 card_title"
+                      to='/about'
+                    >
+                      {post.frontmatter.name}
+                    </Link>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
     )
   }
 }

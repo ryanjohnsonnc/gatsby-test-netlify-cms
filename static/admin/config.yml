@@ -97,6 +97,8 @@ collections:
               }
               ]
             }
+          - {label: "Team Headline", name: "teamHeadline", widget: "string"}
+          - {label: "Team Content", name: "teamContent", widget: "text"}
           - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/products/index.md"
         label: "Products Page"
