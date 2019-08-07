@@ -2,14 +2,35 @@
   background-color: $white-ter;
   
   & > .container 
-    background-color: white;
+    
 
   .column 
     padding: 32px;
+    background-color: white;
 
   +tablet 
     & > .container 
       
     .column
       padding: 72px 86px;
-  
+
+  &.about // Styles specific to the instance withinn the about-page component
+    padding: 0px;
+    
+    & > .container 
+      position: relative
+      top: -100px;
+
+    +tablet 
+      .columns 
+        position: relative;
+        margin-left: 32px;
+
+        &:after 
+          content: '';
+          position: absolute;
+          top: 32px;
+          bottom: -32px;
+          left: -32px;
+          right: 50%;
+          border: 2px solid $primary;

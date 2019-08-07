@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+//import Content, { HTMLContent } from '../components/Content'
 import ContentColumns from '../components/ContentColumns'
 import IndustryCards from '../components/IndustryCards'
 import TeamCards from '../components/TeamCards'
 
-export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, cards, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
+export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, cards, teamHeadline, teamContent, contentComponent }) => {
+  //const PageContent = contentComponent || Content
 
   return (
     <div>
@@ -50,10 +50,19 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
       <IndustryCards 
         cards={cards}
       />
+      <section className={`section section-padding teamSection has-background-grey-whiter`}>
+        <div className="container">
+          <div className="columns">
+            <header className="column is-6 is-offset-3 has-text-centered teamCards_header">
+              <h2 className="title is-uppercase">{teamHeadline}</h2>
+              <p>{teamContent}</p>
+            </header>
+          </div>
+          <TeamCards/>
+        </div>
+      </section>
 
-      <TeamCards/>
-
-      <section className="section has-background-grey-lighter">
+      {/* <section className="section has-background-grey-lighter">
         <div className="container">
           <div className="columns">
             <div className="column is-10 is-offset-1">
@@ -70,7 +79,7 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
@@ -84,6 +93,8 @@ AboutPageTemplate.propTypes = {
   content: PropTypes.string,
   contentComponent: PropTypes.func,
   cards: PropTypes.array,
+  teamHeadline: PropTypes.string,
+  teamContent: PropTypes.string,
 }
 
 const AboutPage = ({ data }) => {
@@ -92,7 +103,7 @@ const AboutPage = ({ data }) => {
   return (
     <Layout>
       <AboutPageTemplate
-        contentComponent={HTMLContent}
+        //contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
         altTitle = {post.frontmatter.stitle}
@@ -100,6 +111,8 @@ const AboutPage = ({ data }) => {
         advantages= {post.frontmatter.advantages}
         record= {post.frontmatter.record}
         cards= {post.frontmatter.industryCards}
+        teamHeadline= {post.frontmatter.teamHeadline}
+        teamContent= {post.frontmatter.teamContent}
       />
     </Layout>
   )
@@ -135,6 +148,8 @@ export const aboutPageQuery = graphql`
             }
           }
         }
+        teamHeadline
+        teamContent
       }
     }
   }
