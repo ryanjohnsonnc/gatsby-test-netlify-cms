@@ -1,10 +1,55 @@
-.c_contentColumns 
-  .column 
-    padding: 32px;
-
-  +tablet 
-    & > .container 
-      
-    .column
-      padding: 72px 86px;
+.c_industryCards 
+  padding-top: 120px;
   
+  .industryCards_card
+    margin: 1%;
+    padding: 22px 24px !important;
+    background-color: white;
+
+    &:last-of-type 
+      margin-bottom: 0px;
+
+    .title 
+      margin-bottom: 42px;
+  
+  .industryCards_infoBox
+    display: none;
+
+  +tablet
+    padding-top: 160px;
+
+    .industryCards_wrapper
+      +align-items(stretch);
+      
+    .industryCards_card
+      margin: .5%;
+      margin-bottom: 0px;
+      
+      &:first-of-type 
+        margin-left: 0px;
+
+  +desktop
+    & > .container
+      position: relative
+    
+    .industryCards_card
+      min-height: 725px;
+
+    .industryCards_infoBox
+      display: block;
+      position: absolute;
+      left: 32px;
+      right: -32px;
+      bottom: -32px;
+      height: 500px;
+      padding: 56px 48px;
+      background-color: $pink;
+
+      .infoBox_item
+        display: none;
+        &:first-of-type 
+          display: flex;
+
+      p 
+        color: white;
+      

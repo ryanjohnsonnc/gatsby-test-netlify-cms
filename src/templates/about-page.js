@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 import ContentColumns from '../components/ContentColumns'
 import IndustryCards from '../components/IndustryCards'
+import TeamCards from '../components/TeamCards'
 
 export const AboutPageTemplate = ({ title, altTitle, history, advantages, record, cards, content, contentComponent }) => {
   const PageContent = contentComponent || Content
@@ -49,6 +50,8 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
       <IndustryCards 
         cards={cards}
       />
+
+      <TeamCards/>
 
       <section className="section has-background-grey-lighter">
         <div className="container">

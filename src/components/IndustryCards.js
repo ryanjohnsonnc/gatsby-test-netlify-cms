@@ -6,12 +6,23 @@ export const IndustryCards = ({ cards }) => (
   
   <section className={`section c_industryCards has-background-grey-lighter`}>
     <div className="container">
-      <div className="columns">
+      <div className="columns industryCards_wrapper">
         {cards.map(card => (
-          <div key={card.industry} className="column is-3">
-            <h3>{card.industry}</h3>
+          <div key={card.industry} className="column industryCards_card">
+            <h3 className="title">{card.industry}</h3>
             <p>{card.industryShort}</p>
-            <PreviewCompatibleImage imageInfo={card.industryInfo.industryImage} />
+          </div>
+        ))}
+      </div>
+      <div class="industryCards_infoBox">
+        {cards.map(card => (
+          <div key={card.industry} className="infoBox_item columns">
+            <div className="column">
+              <p>{card.industryInfo.industryLong}</p>
+            </div>
+            <div className="column">
+              <PreviewCompatibleImage imageInfo={card.industryInfo.industryImage} />
+            </div>
           </div>
         ))}
       </div>
