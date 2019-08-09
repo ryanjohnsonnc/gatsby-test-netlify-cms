@@ -26,9 +26,6 @@ $max-width: 1124px;
 $body-background-color: $white-ter;
 $body-weight: 500;
 
-.container 
-  max-width: $max-width !important;
-
 .navbar .navbar-menu
   box-shadow:none !important
 
@@ -153,6 +150,10 @@ $menu-label-color: $white-ter
 @import "../sass/components/industryCards"
 @import "../sass/components/teamCards"
 
+.container 
+  +desktop
+    max-width: $max-width !important;
+
 // responsiveness
 +tablet-only
   .blog-list-item .featured-thumbnail
@@ -174,6 +175,49 @@ $menu-label-color: $white-ter
     padding-bottom: 150px;
   .title 
     color: white;
+
+// Page Titles
+.page 
+  position: relative
+
+  .page_title 
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 80px 1.5rem;  
+  .page_content
+    padding: 80px 1.5rem;
+
+  +desktop
+    &.page_title--left 
+      height: 100vh;
+      overflow: hidden;
+      &::before
+        content: '';
+        display: block;
+        z-index: 1;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+        right: 70%;
+        background-color: $black;
+      .page_title 
+        position: relative
+        z-index: 2;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        @include rotate(180);  
+        
+        h1
+          max-height: 500px;
+      
+      .page_content
+        padding: 120px 1.5rem;
+    
+  
+
+
 
 // About Page
 section.record 
@@ -223,3 +267,12 @@ section.record
 
       &.record_content 
         padding: 120px 90px;
+
+// Contact Page
+.contact-page
+  .page_content
+    @include align-items(center);
+    @include justify-content(center);
+    .content
+      max-width: 500px;
+      margin: 0px auto;

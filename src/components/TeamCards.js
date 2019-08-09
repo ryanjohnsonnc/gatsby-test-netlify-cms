@@ -27,17 +27,11 @@ class TeamCards extends React.Component {
     };
 
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   openModal() {
     this.setState({modalIsOpen: true});
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
   }
 
   closeModal() {
@@ -56,7 +50,7 @@ class TeamCards extends React.Component {
               { node: post }
             ) => (
               <div className="is-parent column is-3 teamCards_card" key={post.id}>
-                <div class="card_wrapper">
+                <div className="card_wrapper">
                   {post.frontmatter.featuredimage ? (
                     <div className="card_image">
                       <PreviewCompatibleImage
@@ -79,9 +73,9 @@ class TeamCards extends React.Component {
                 </div>
 
                 <button onClick={this.openModal}>Open Modal</button>
+                
                 <Modal
                   isOpen={this.state.modalIsOpen}
-                  onAfterOpen={this.afterOpenModal}
                   onRequestClose={this.closeModal}
                   style={modalStyles}
                   contentLabel="Example Modal"
@@ -89,11 +83,10 @@ class TeamCards extends React.Component {
 
                   <h2 className="title" ref={subtitle => this.subtitle = subtitle}>{post.frontmatter.name}</h2>
                   <h3>{post.frontmatter.title}</h3>
-                  {/* <p>{post.frontmatter.}</p> */}
+                  <p>{post.frontmatter.bio}</p>
                   <button onClick={this.closeModal}>close</button>
                   
                 </Modal>
-
               </div>
             ))}
         </div>
@@ -132,6 +125,7 @@ export default () => (
                 templateKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredpost
+                bio
                 featuredimage {
                   childImageSharp {
                     fluid(maxWidth: 120, quality: 100) {

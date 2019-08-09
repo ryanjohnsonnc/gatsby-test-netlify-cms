@@ -14,7 +14,7 @@ export const IndustryCards = ({ cards }) => (
           </div>
         ))}
       </div>
-      <div class="industryCards_infoBox">
+      <div className="industryCards_infoBox">
         {cards.map(card => (
           <div key={card.industry} className="infoBox_item columns">
             <div className="column">

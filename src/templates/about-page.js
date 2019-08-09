@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
+import Footer from '../components/Footer'
 //import Content, { HTMLContent } from '../components/Content'
 import ContentColumns from '../components/ContentColumns'
 import IndustryCards from '../components/IndustryCards'
@@ -31,8 +32,7 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
         columnOneContent={history}
         className= "about"
       />
-     
-
+      
       <section className="section record">
         <div className="container">
           <div className="columns">
@@ -80,6 +80,8 @@ export const AboutPageTemplate = ({ title, altTitle, history, advantages, record
           </div>
         </div>
       </section> */}
+
+      <Footer />
     </div>
   )
 }
