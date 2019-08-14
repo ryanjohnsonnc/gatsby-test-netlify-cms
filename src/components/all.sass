@@ -149,6 +149,7 @@ $menu-label-color: $white-ter
 @import "../sass/components/contentColumns"
 @import "../sass/components/industryCards"
 @import "../sass/components/teamCards"
+@import "../sass/components/contactForm"
 
 .container 
   +desktop
@@ -206,11 +207,12 @@ $menu-label-color: $white-ter
         position: relative
         z-index: 2;
         writing-mode: vertical-rl;
-        text-orientation: mixed;
-        @include rotate(180);  
+        @include rotate(-90deg);
+        text-align: right;
         
         h1
-          max-height: 500px;
+          max-height: 443px;
+          //@include align-self(flex-start);
       
       .page_content
         padding: 120px 1.5rem;
@@ -270,6 +272,8 @@ section.record
 
 // Contact Page
 .contact-page
+  background-color: white;
+
   .page_content
     @include align-items(center);
     @include justify-content(center);

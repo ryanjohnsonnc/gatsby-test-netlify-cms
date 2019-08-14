@@ -23,15 +23,22 @@ class TeamCards extends React.Component {
     super();
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      name: '',
+      title: '',
+      bio: ''
     };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-
-  openModal() {
-    this.setState({modalIsOpen: true});
+  openModal = (event) => {
+    this.setState({
+      modalIsOpen: true,
+      name: event.target.attributes['data-name'].value,
+      title: event.target.attributes['data-title'].value,
+      bio: event.target.attributes['data-bio'].value
+    });
   }
 
   closeModal() {
@@ -72,9 +79,16 @@ class TeamCards extends React.Component {
                   </Link>
                 </div>
 
-                <button onClick={this.openModal}>Open Modal</button>
-                
-                <Modal
+                <button 
+                  onClick={this.openModal} 
+                  data-name={post.frontmatter.name}
+                  data-title={post.frontmatter.title}
+                  data-bio={post.frontmatter.bio}
+                >
+                  Open Modal
+                </button>
+
+                {/* <Modal
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
                   style={modalStyles}
@@ -86,9 +100,23 @@ class TeamCards extends React.Component {
                   <p>{post.frontmatter.bio}</p>
                   <button onClick={this.closeModal}>close</button>
                   
-                </Modal>
+                </Modal> */}
               </div>
             ))}
+
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              onRequestClose={this.closeModal}
+              style={modalStyles}
+              contentLabel="Example Modal"
+            >
+
+              <h2 className="title">{this.state.name}</h2>
+              <h3>{this.state.title}</h3>
+              <p>{this.state.bio}</p>
+              <button onClick={this.closeModal}>close</button>
+              
+            </Modal>
         </div>
       </div>
     )
