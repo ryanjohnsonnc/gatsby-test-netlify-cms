@@ -37,9 +37,9 @@ export default class Index extends React.Component {
   render() {
     return (
       <Layout>
-        <div className="page contact-page page_title--left">
+        <div className="page contact-page page_title--left is flex">
           <div className="container">
-            <div className="columns">
+            <div className="columns is flex">
               <div className="column is-3 page_title has-background-black">
                 <h1 className="is-size-1 has-text-weight-bold has-text-white">CONTACT US FOR MORE INFO</h1>
               </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import Modal from 'react-modal'
 //import Content, { HTMLContent } from '../components/Content'
@@ -70,37 +70,27 @@ class TeamCards extends React.Component {
                       />
                     </div>
                   ) : 'no image'}
+                  
+                  <div className="card_info">
+                    <span
+                      className="title is-size-4 card_title"
+                    >
+                      {post.frontmatter.name}
+                    </span>
 
-                  <Link
-                    className="title is-size-4 card_title"
-                    to='/about'
-                  >
-                    {post.frontmatter.name}
-                  </Link>
+                    <button 
+                      onClick={this.openModal} 
+                      data-name={post.frontmatter.name}
+                      data-title={post.frontmatter.title}
+                      data-bio={post.frontmatter.bio}
+                      className="card_link is-size-7 has-text-weight-bold"
+                    >
+                      Open Modal
+                    </button>
+                  </div>
                 </div>
 
-                <button 
-                  onClick={this.openModal} 
-                  data-name={post.frontmatter.name}
-                  data-title={post.frontmatter.title}
-                  data-bio={post.frontmatter.bio}
-                >
-                  Open Modal
-                </button>
-
-                {/* <Modal
-                  isOpen={this.state.modalIsOpen}
-                  onRequestClose={this.closeModal}
-                  style={modalStyles}
-                  contentLabel="Example Modal"
-                >
-
-                  <h2 className="title" ref={subtitle => this.subtitle = subtitle}>{post.frontmatter.name}</h2>
-                  <h3>{post.frontmatter.title}</h3>
-                  <p>{post.frontmatter.bio}</p>
-                  <button onClick={this.closeModal}>close</button>
-                  
-                </Modal> */}
+                
               </div>
             ))}
 

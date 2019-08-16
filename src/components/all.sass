@@ -206,20 +206,19 @@ $menu-label-color: $white-ter
       .page_title 
         position: relative
         z-index: 2;
-        writing-mode: vertical-rl;
-        @include rotate(-90deg);
-        text-align: right;
         
         h1
-          max-height: 443px;
-          //@include align-self(flex-start);
+          position: absolute;
+          top: 50%;
+          left: -140px;
+          width: 443px;
+          // @include translate(-50%, 0px);
+          // @include rotate(-90);
+          @include transform(rotate(-90deg) translateY(-50%));
       
       .page_content
         padding: 120px 1.5rem;
     
-  
-
-
 
 // About Page
 section.record 
@@ -269,6 +268,7 @@ section.record
 
       &.record_content 
         padding: 120px 90px;
+
 
 // Contact Page
 .contact-page

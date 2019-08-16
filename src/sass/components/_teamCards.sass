@@ -1,10 +1,23 @@
 // Team Card Item
 .teamCards_card
+  position: relative;
   .card_image 
     margin-bottom: 16px;
   
-  .card_title
+
+  .card_info
     padding-left: 8px;
+    padding-right: 8px;
+    position: relative;
+    .card_title
+      padding-left: 8px;
+
+    .card_link 
+      padding-left: 8px;
+      +tablet 
+        position: absolute;
+        right: 0px;
+        top: 0px;
 
 .teamCards_header 
   margin-bottom: 80px;
