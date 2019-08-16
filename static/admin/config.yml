@@ -30,39 +30,27 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
           - {label: Title, name: title, widget: string}
-          - {label: Description, name: description, widget: string}
-          - {label: Main, 
-              name: main, 
-              widget: object, 
-              fields: 
-                [
-                {label: Heading, 
-                  name: heading, 
-                  widget: string}, 
-                  {label: Description, name: description, widget: text}, 
-                  {label: Image1, 
-                    name: image1, 
-                    widget: object, 
-                    fields: 
-                      [
-                      {label: Image, name: image, widget: image}, 
-                      {label: Alt, name: alt, widget: string}]}, 
-                  {label: Image2, 
-                    name: image2, 
-                    widget: object, 
-                    fields: 
-                      [{label: Image, name: image, widget: image}, 
-                      {label: Alt, name: alt, widget: string}]}, 
-                  {label: Image3, 
-                    name: image3, 
-                    widget: object, 
-                    fields: 
-                      [{label: Image, 
-                        name: image, 
-                        widget: image}, 
-                      {label: Alt, name: alt, widget: string}]}
-                ]
+          - {label: Description, name: description, widget: "text"}
+          - {label: "Solution Cards",
+            name: "solutionCards",
+            widget: "list",
+            fields: 
+              [
+              {label: "Solution", name: "solution", widget: "string", default: "Creative Approach"},
+              {label: "Solution Short Description", name: "solutionShort", widget: "text", default: "Solution description"},
+              {label: "Solution Image", name: "solutionImage", widget: "image", default: "/img/emmet.jpg"}
+
+              {label: "Solution Info",
+                name: "solutionInfo",
+                widget: "list",
+                fields: 
+                  [
+                  {label: "Title", name: "title", widget: string}
+                  {label: "Content", name: "content", widget: "text", default: "Industry long description"},
+                  ]
               }
+              ]
+            }
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"
@@ -73,7 +61,6 @@ collections:
           - {label: "History", name: "history", widget: "text"}
           - {label: "Advantages", name: "advantages", widget: "text"}
           - {label: "Record", name: "record", widget: "text"}
-          
           - {label: "Industry Cards",
             name: "industryCards",
             widget: "list",
