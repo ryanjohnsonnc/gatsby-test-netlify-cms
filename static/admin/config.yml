@@ -38,14 +38,14 @@ collections:
               [
               {label: "Solution", name: "solution", widget: "string", default: "Creative Approach"},
               {label: "Solution Short Description", name: "solutionShort", widget: "text", default: "Solution description"},
-              {label: "Solution Image", name: "solutionImage", widget: "image", default: "/img/emmet.jpg"}
+              {label: "Solution Image", name: "solutionImage", widget: "image", default: "/img/emmet.jpg"},
 
               {label: "Solution Info",
                 name: "solutionInfo",
                 widget: "list",
                 fields: 
                   [
-                  {label: "Title", name: "title", widget: string}
+                  {label: "Title", name: "title", widget: string},
                   {label: "Content", name: "content", widget: "text", default: "Industry long description"},
                   ]
               }
