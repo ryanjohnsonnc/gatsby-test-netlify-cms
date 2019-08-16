@@ -17,8 +17,11 @@ class IndexPageTemplate extends React.Component {
 
   render() {
     return (
-      <div className="c_IndexPage has-background-black">
-        <h1>{this.props.headline}</h1>
+      <div className="c_indexPage has-background-black">
+        <div className="indexPage_content">
+          <h1>{this.props.headline}</h1>
+          <p>{this.props.intro}</p>
+        </div>
       </div>
     )
   }
@@ -52,6 +55,7 @@ const IndexPage = ({ data }) => {
     <Layout>
       <IndexPageTemplate
         headline={frontmatter.title}
+        intro={frontmatter.description}
       />
     </Layout>
   )
