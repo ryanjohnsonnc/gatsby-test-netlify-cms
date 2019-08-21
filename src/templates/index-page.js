@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/Layout'
-// import Features from '../components/Features'
-// import BlogRoll from '../components/BlogRoll'
+import HomeCards from '../components/HomeCards'
 
 class IndexPageTemplate extends React.Component {
   constructor(){
@@ -17,10 +16,29 @@ class IndexPageTemplate extends React.Component {
 
   render() {
     return (
-      <div className="c_indexPage has-background-black">
-        <div className="indexPage_content">
-          <h1>{this.props.headline}</h1>
-          <p>{this.props.intro}</p>
+      <div className="c_indexPage has-background-black section">
+        <div className="indexPage_content container">
+          <div className="columns">
+            <header className="indexPage_header column is-6">
+              <h1 className="is-size-4 is-uppercase has-text-weight-bold">{this.props.headline}</h1>
+              <p>{this.props.intro}</p>
+              <Link className="button is-primary" to="/projects">
+                See Projects
+              </Link>
+            </header>
+          </div>
+
+
+          <HomeCards 
+            cards={this.props.cards}
+          />
+
+          <div className="indexPage_about-callout">
+            <span className="is-size-6 has-color-grey-dark bannered"><span>Want to learn more about the company?</span></span>
+            <Link className="is-size-6 has-text-weight-bold is-uppercase has-color-grey-dark" to="/about">
+              About Us
+            </Link>
+          </div>
         </div>
       </div>
     )
@@ -33,21 +51,6 @@ IndexPageTemplate.propTypes = {
   cards: PropTypes.array,
 }
 
-
-
-// IndexPageTemplate.propTypes = {
-//   image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-//   title: PropTypes.string,
-//   stitle: PropTypes.string,
-//   heading: PropTypes.string,
-//   subheading: PropTypes.string,
-//   mainpitch: PropTypes.object,
-//   description: PropTypes.string,
-//   intro: PropTypes.shape({
-//     blurbs: PropTypes.array,
-//   }),
-// }
-
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
@@ -56,6 +59,7 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         headline={frontmatter.title}
         intro={frontmatter.description}
+        cards={frontmatter.solutionCards}
       />
     </Layout>
   )
@@ -76,34 +80,22 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         title
-        stitle
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
         heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
+        solutionCards {
+          solution
+          solutionShort
+          solutionImage {
+            childImageSharp {
+              fluid(maxWidth: 2048, quality: 100) {
+                ...GatsbyImageSharpFluid
               }
             }
-            text
           }
-          heading
-          description
+          solutionInfo {
+            title
+            content
+          }
         }
       }
     }

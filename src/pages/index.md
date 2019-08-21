@@ -65,7 +65,7 @@ solutionCards:
           customers.
         title: Title Three
     solutionShort: Basic solution description
-  - solution: Creative Approach
+  - solution: Creative Reproach
     solutionImage: /img/blog-index.jpg
     solutionInfo:
       - content: >-

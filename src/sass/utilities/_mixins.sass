@@ -129,7 +129,7 @@
   background: -o-linear-gradient($direction, $list)
   background: linear-gradient($direction, $list)
 
-=box-sizing($box-model)
+=box-sizing($box-model: border-box)
   -webkit-box-sizing: $box-model
 
   // Safari <= 5
@@ -137,3 +137,7 @@
 
   // Firefox <= 19
   box-sizing: $box-model
+
+// Default Border Radius to soften edges
+= default-border($radius: 4px) 
+  border-radius: $radius;

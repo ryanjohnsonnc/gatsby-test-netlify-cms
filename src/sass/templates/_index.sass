@@ -1,0 +1,41 @@
+.c_index_page
+
+.indexPage_header 
+  padding-top: 110px;
+  text-align: center;
+  h1 
+    color: white;
+    text-align: center;
+
+  p 
+    display: none;
+  
+  .button 
+    margin-top: 32px;
+
+.indexPage_about-callout 
+  display: block;
+  margin-top: 80px;
+  
+  .bannered 
+    position: relative;
+    color: #959595;
+    margin-right: 18px;
+
+    & > * 
+      position: relative;
+      z-index: 2;
+
+    &:after 
+      content: '';
+      display: block;
+      background-color: #191717;
+      position: absolute;
+      top: -12px;
+      bottom: -12px;
+      left: -200px;
+      right: -12px;
+      z-index: 1;
+    
+  a 
+    color: #959595;

@@ -46,7 +46,7 @@ collections:
                 fields: 
                   [
                   {label: "Title", name: "title", widget: string},
-                  {label: "Content", name: "content", widget: "text", default: "Industry long description"},
+                  {label: "Content", name: "content", widget: "text", default: "Enter content here"},
                   ]
               }
               ]
