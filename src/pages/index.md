@@ -43,6 +43,8 @@ solutionCards:
     solutionShort: >-
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
   - solution: Creative Approach
     solutionImage: /img/blog-index.jpg
     solutionInfo:
@@ -64,7 +66,11 @@ solutionCards:
           craft compelling systems that promise to engage and impact your
           customers.
         title: Title Three
-    solutionShort: Basic solution description
+    solutionShort: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
   - solution: Creative Reproach
     solutionImage: /img/blog-index.jpg
     solutionInfo:
@@ -80,6 +86,10 @@ solutionCards:
           craft compelling systems that promise to engage and impact your
           customers.
         title: Second Title
-    solutionShort: Solution description for the third item
+    solutionShort: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
 ---
 

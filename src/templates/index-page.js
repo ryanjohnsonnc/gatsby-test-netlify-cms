@@ -22,7 +22,7 @@ class IndexPageTemplate extends React.Component {
             <header className="indexPage_header column is-6">
               <h1 className="is-size-4 is-uppercase has-text-weight-bold">{this.props.headline}</h1>
               <p>{this.props.intro}</p>
-              <Link className="button is-primary" to="/projects">
+              <Link className="button is-primary is-hollow" to="/about">
                 See Projects
               </Link>
             </header>
@@ -35,7 +35,7 @@ class IndexPageTemplate extends React.Component {
 
           <div className="indexPage_about-callout">
             <span className="is-size-6 has-color-grey-dark bannered"><span>Want to learn more about the company?</span></span>
-            <Link className="is-size-6 has-text-weight-bold is-uppercase has-color-grey-dark" to="/about">
+            <Link className="is-size-7 has-text-weight-bold is-uppercase has-color-grey-dark" to="/about">
               About Us
             </Link>
           </div>

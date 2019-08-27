@@ -3,14 +3,48 @@ import PropTypes from 'prop-types'
 //mport PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 //import Img from "gatsby-image"
 import Slider from "react-slick";
+import Modal from 'react-modal'
+const modalStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+
+Modal.setAppElement('#___gatsby')
 
 class HomeCards extends React.Component {
   constructor(){
     super();
 
     this.state = {
-      cardsOpen: false
-    }
+      modalIsOpen: false,
+      solution: '',
+      image: '',
+      quote: '',
+      slides: '',
+    };
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal = (event) => {
+    this.setState({
+      modalIsOpen: true,
+      solution: event.target.attributes['data-solution'].value,
+      image: event.target.attributes['data-image'].value,
+      quote: event.target.attributes['data-quote'].value,
+      slides: event.target.attributes['data-slides'].value,
+    });
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   cardImageStyle = (src) => ({
@@ -19,20 +53,21 @@ class HomeCards extends React.Component {
 
 
   render() {
-    var settings = {
-      dots: true,
+    var cardSettings = {
+      dots: false,
+      controls: false,
+      arrows: false,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
       centerMode: true,
-      centerPadding: '20px'
     };
     return (
-      <section className={`c_homeCards`}>
+      <div className={`c_homeCards`}>
         <div className="">
           <div className="homeCards_wrapper">
-            <Slider {...settings}>
+            <Slider {...cardSettings}>
               {this.props.cards.map(card => (
                 
                 <div key={card.solution} className="homeCards_card">
@@ -43,9 +78,18 @@ class HomeCards extends React.Component {
                     ></figure>
                     
                     <div className="card_content">
-                      <h3 className="title is-size-3 has-text-weight-bold">{card.solution}</h3>
+                      <h3 className="title is-size-4 is-uppercase has-text-weight-bold">{card.solution}</h3>
                       <p>{card.solutionShort}</p>
-                      <button href="#" className="button is-primary">Explore More</button>
+                      <button 
+                        onClick={this.openModal} 
+                        data-solution={card.solutionShort}
+                        data-image={card.solution}
+                        data-quote={card.solutionShort}
+                        data-slides={card.solutionShort}
+                        className="button is-primary is-thin"
+                      >
+                        Explore More
+                      </button>
                     </div>
 
                     {/* {card.solutionInfo.map(slide => (
@@ -59,21 +103,34 @@ class HomeCards extends React.Component {
               ))}
             </Slider>
 
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              onRequestClose={this.closeModal}
+              style={modalStyles}
+              contentLabel="Example Modal"
+            >
+
+              <h2 className="title">{this.state.solution}</h2>
+              <p>{this.state.quote}</p>
+              <button onClick={this.closeModal}>close</button>
+              
+            </Modal>
             
           </div>
         </div>
-      </section>
+      </div>
     )
   }
 }
 
 HomeCards.propTypes = {
-  cards: PropTypes.shape({
-    solution: PropTypes.string,
-    solutionShort: PropTypes.string,
-    solutionImage: PropTypes.string,
-    solutionInfo: PropTypes.array,
-  }),
+  // cards: PropTypes.shape({
+  //   solution: PropTypes.string,
+  //   solutionShort: PropTypes.string,
+  //   solutionImage: PropTypes.string,
+  //   solutionInfo: PropTypes.array,
+  // }),
+  cards: PropTypes.array,
 }
 
 export default HomeCards

@@ -70,8 +70,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
-        develop: true, // Activates purging in npm run develop
-        whitelist: ['slick-slider', 'footer'],
+        develop: false, // Activates purging in npm run develop
+        whitelistPatterns: [/slick$/],
         purgeOnly: ['/all.sass'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
