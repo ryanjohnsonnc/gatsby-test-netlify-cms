@@ -85,6 +85,7 @@ export const pageQuery = graphql`
         solutionCards {
           solution
           solutionShort
+          solutionQuote
           solutionImage {
             childImageSharp {
               fluid(maxWidth: 2048, quality: 100) {

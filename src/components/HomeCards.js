@@ -6,12 +6,10 @@ import Slider from "react-slick";
 import Modal from 'react-modal'
 const modalStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    top                   : '0%',
+    left                  : '0%',
+    right                 : '0px',
+    bottom                : '0px',
   }
 };
 
@@ -26,7 +24,7 @@ class HomeCards extends React.Component {
       solution: '',
       image: '',
       quote: '',
-      slides: '',
+      slides: [],
     };
 
     this.openModal = this.openModal.bind(this);
@@ -51,6 +49,12 @@ class HomeCards extends React.Component {
     backgroundImage: 'url(' + src + ')'
   })
 
+  returnSlides = (slides) => ({
+   
+  })
+  returnSlides(slides) {
+    return JSON.parse(slides);
+  }
 
   render() {
     var cardSettings = {
@@ -79,13 +83,13 @@ class HomeCards extends React.Component {
                     
                     <div className="card_content">
                       <h3 className="title is-size-4 is-uppercase has-text-weight-bold">{card.solution}</h3>
-                      <p>{card.solutionShort}</p>
+                      <p>{card.solutionQuote}</p>
                       <button 
                         onClick={this.openModal} 
-                        data-solution={card.solutionShort}
-                        data-image={card.solution}
-                        data-quote={card.solutionShort}
-                        data-slides={card.solutionShort}
+                        data-solution={card.solution}
+                        data-image={card.solutionImage.childImageSharp.fluid.src}
+                        data-quote={card.solutionQuote}
+                        data-slides={JSON.stringify(card.solutionInfo)}
                         className="button is-primary is-thin"
                       >
                         Explore More
@@ -109,11 +113,24 @@ class HomeCards extends React.Component {
               style={modalStyles}
               contentLabel="Example Modal"
             >
-
-              <h2 className="title">{this.state.solution}</h2>
+              <figure 
+                className="card_image" 
+                style={this.cardImageStyle(this.state.image)}
+              >
+                <h2 className="title">{this.state.solution}</h2>
+              </figure>
+                
               <p>{this.state.quote}</p>
-              <button onClick={this.closeModal}>close</button>
+              {this.returnSlides(this.state.slides)}
               
+              {/* {this.state.slides.map(slide => (
+                <div>
+                  {slide.title}
+                </div>
+  
+              ))} */}
+              
+              <button onClick={this.closeModal}>close</button>
             </Modal>
             
           </div>
