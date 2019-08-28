@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 //mport PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 //import Img from "gatsby-image"
 import Slider from "react-slick";
-import Modal from 'react-modal'
+import Modal from 'react-modal';
+import HomeMobileSlides from '../components/HomeMobileSlides'
 const modalStyles = {
   content : {
     top                   : '0%',
@@ -49,13 +50,6 @@ class HomeCards extends React.Component {
     backgroundImage: 'url(' + src + ')'
   })
 
-  returnSlides = (slides) => ({
-   
-  })
-  returnSlides(slides) {
-    return JSON.parse(slides);
-  }
-
   render() {
     var cardSettings = {
       dots: false,
@@ -95,13 +89,6 @@ class HomeCards extends React.Component {
                         Explore More
                       </button>
                     </div>
-
-                    {/* {card.solutionInfo.map(slide => (
-                      <div className="slide_content">
-                        {slide.title}
-                        {slide.content}
-                      </div>
-                    ))} */}
                   </div>
                 </div>
               ))}
@@ -111,28 +98,27 @@ class HomeCards extends React.Component {
               isOpen={this.state.modalIsOpen}
               onRequestClose={this.closeModal}
               style={modalStyles}
-              contentLabel="Example Modal"
-            >
-              <figure 
-                className="card_image" 
-                style={this.cardImageStyle(this.state.image)}
-              >
-                <h2 className="title">{this.state.solution}</h2>
-              </figure>
-                
-              <p>{this.state.quote}</p>
-              {this.returnSlides(this.state.slides)}
-              
-              {/* {this.state.slides.map(slide => (
-                <div>
-                  {slide.title}
+              contentLabel="Solution Modal"
+            > 
+              <div className="card_modal-mobile">
+                <figure 
+                  className="card_image" 
+                  style={this.cardImageStyle(this.state.image)}
+                >
+                  <h2 className="title has-color-white is-size-4 is-uppercase">{this.state.solution}</h2>
+                </figure>
+    
+                <p className="card_quote">{this.state.quote}</p>
+
+                <div className="card_slides">
+                  <HomeMobileSlides
+                    slides={this.state.slides}
+                  />
                 </div>
-  
-              ))} */}
               
-              <button onClick={this.closeModal}>close</button>
-            </Modal>
-            
+                <button className="modal_close" onClick={this.closeModal}>X</button>
+              </div>
+            </Modal>         
           </div>
         </div>
       </div>
@@ -141,12 +127,6 @@ class HomeCards extends React.Component {
 }
 
 HomeCards.propTypes = {
-  // cards: PropTypes.shape({
-  //   solution: PropTypes.string,
-  //   solutionShort: PropTypes.string,
-  //   solutionImage: PropTypes.string,
-  //   solutionInfo: PropTypes.array,
-  // }),
   cards: PropTypes.array,
 }
 

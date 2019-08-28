@@ -26,6 +26,10 @@ $max-width: 1124px;
 $body-background-color: $white-ter;
 $body-weight: 500;
 
+.ReactModalPortal
+  position: relative;
+  z-index: 999;
+
 .navbar .navbar-menu
   box-shadow:none !important
 
@@ -138,6 +142,7 @@ $menu-label-color: $white-ter
 @import "../sass/components/teamCards"
 @import "../sass/components/homeCards"
 @import "../sass/components/contactForm"
+@import "../sass/components/homeMobileSlides"
 
 
 .container 
@@ -219,6 +224,26 @@ $menu-label-color: $white-ter
       .page_content
         padding: 120px 1.5rem;
     
+// Slick Settings
+.slick-dots
+  text-align: center;
+  
+  li 
+    display: inline-block;
+
+    button
+      background: transparent;
+      -webkit-appearance: none;
+      appearance: none;
+      -moz-appearance: none;
+      border: none;
+      font-size: 16px;
+      color: $grey-lighter;
+      font-weight: 900;
+    &.slick-active 
+      button
+        color: $primary;
+
 
 // About Page
 section.record 
