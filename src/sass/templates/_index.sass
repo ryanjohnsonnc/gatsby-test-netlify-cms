@@ -1,4 +1,13 @@
-.c_index_page
+.c_indexPage
+  min-height: 100vh;
+  background: transparent radial-gradient(closest-side at 50% 50%, #2B2A2A 0%, #000000 100%) 0% 0% no-repeat padding-box;
+
+  .indexPage_content
+    position: relative;
+
+    +desktop
+      margin-top: 40px
+      min-height: 100vh;
 
 .indexPage_header 
   padding-top: 70px;
@@ -14,6 +23,27 @@
   
   .button 
     margin-top: 32px;
+  
+    &.first 
+      display: none;
+  
+  +tablet
+    text-align: left
+    max-width: 427px;
+    
+    .button.first 
+      display: inline-flex;
+      margin-right: 12px;
+    
+    h1 
+      margin-bottom: 24px;
+      text-align: left;
+      max-width: none;
+      font-size: 32px !important;
+    
+    p 
+      display: block;
+      color: white;
 
 .indexPage_about-callout 
   display: block;
@@ -41,3 +71,9 @@
     
   a 
     color: #959595;
+  
+  +desktop
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;

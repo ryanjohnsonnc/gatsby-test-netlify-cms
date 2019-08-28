@@ -139,5 +139,12 @@
   box-sizing: $box-model
 
 // Default Border Radius to soften edges
-= default-border($radius: 4px) 
+=default-border($radius: 4px) 
   border-radius: $radius;
+
+// Default Shadow
+=default-shadow 
+  -webkit-box-shadow: 0px 10px 20px 0px rgba(#000, .2);
+  -moz-box-shadow:  0px 10px 20px 0px rgba(#000, .2);
+  -ms-box-shadow:  0px 10px 20px 0px rgba(#000, .2);
+  box-shadow:  0px 10px 20px 0px rgba(#000, .2);

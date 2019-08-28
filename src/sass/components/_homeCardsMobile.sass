@@ -1,0 +1,81 @@
+.c_homeCardsMobile 
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+
+  .slick-slider
+    .slick-list
+      margin: 0px -8px;
+    .slick-slide
+      padding: 0px 8px;
+  +tablet 
+    margin-left: 0px;
+    margin-right: 0px;
+  
+  +desktop
+    display: none;
+
+.homeCardsMobile_card 
+  padding: 12px;
+  background-color: white;
+  @include default-border;
+  @include box-sizing;
+
+  .card_image 
+    display: block;
+    height: 120px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px auto 24px auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+  .card_content
+    padding: 0px 20px;
+    p 
+      margin-bottom: 24px;
+
+    .button 
+      margin-bottom: 12px;
+
+.card_modal-mobile
+  position: relative;
+  padding: 58px 0px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  max-width: 600px;
+  margin: 0px auto;
+
+  .card_image 
+    margin-bottom: 40px;
+    padding: 8px 24px;
+
+    h2 
+      color: white;
+
+  .card_quote
+    text-align: center;
+    margin: 0px auto;
+    width: 262px;
+    max-width: 80%;
+  
+  .modal_close
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    border: none;
+    font-size: 24px;
+    font-weight: 900;
+
+  .card_slides
+    margin-top: 40px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-top: 40px;
+    border-top: 2px solid $grey-lighter;
+
+

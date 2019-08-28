@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql, Link } from 'gatsby'
 
 import Layout from '../components/Layout'
+import HomeCardsMobile from '../components/HomeCardsMobile'
 import HomeCards from '../components/HomeCards'
 
 class IndexPageTemplate extends React.Component {
@@ -22,14 +23,20 @@ class IndexPageTemplate extends React.Component {
             <header className="indexPage_header column is-6">
               <h1 className="is-size-4 is-uppercase has-text-weight-bold">{this.props.headline}</h1>
               <p>{this.props.intro}</p>
+              <Link className="button is-primary first" to="/about">
+                Learn More
+              </Link>
               <Link className="button is-primary is-hollow" to="/about">
                 See Projects
               </Link>
             </header>
           </div>
 
+          <HomeCardsMobile
+            cards={this.props.cards}
+          />
 
-          <HomeCards 
+          <HomeCards
             cards={this.props.cards}
           />
 
