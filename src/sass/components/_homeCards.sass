@@ -24,7 +24,13 @@
   z-index: 3;
   @include default-shadow;
   @include transition(all .7s ease);
+  @include opacity(1);
 
+  & > *
+    @include transition(all .7s ease);
+    @include opacity(1);
+    max-height: 678px;
+  
   &:nth-of-type(2)
     right: 16px;
     top: 16px;
@@ -34,6 +40,7 @@
     right: 0px;
     z-index: 1;
     top: 32px;
+
 
   .card_image 
     display: block;
@@ -87,7 +94,10 @@
         right: 7%;
 
   .single-open-true & 
-    display: none;
+    @include opacity(0);
+    
+    & > * 
+      @include opacity(0);
 
     &.card-open
       display: block;
@@ -95,6 +105,61 @@
       z-index: 12;
       left: 0px;
       @include translate(0%, 0px);
+      @include opacity(1);
+
+      & > * 
+        @include opacity(1);
+      
+      .card_content 
+        @include flex(1 0 60%);
+
+      .card_wrapper
+        @include flexbox;
+        @include align-items(stretch);
+      
+      .card_image
+        @include flex(1 0 40px);
+        white-space: nowrap;
+        margin: 0px;
+        height: 610px;
+
+        .title
+          @include rotate(270);
+          @include transform-origin(0px 100%);
+          left: 30px;
+      
+      .card_content--open
+        @include flexbox;
+        white-space: normal;
+
+        .card_content-left
+          @include flex(1 0 398px);
+          padding: 0px 52px;
+          text-align: center;
+
+        .card_content-right
+          @include flex(1 0 60%);
+
+          .modal_close
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: transparent;
+            -webkit-appearance: none;
+            appearance: none;
+            -moz-appearance: none;
+            border: none;
+            font-size: 24px;
+            font-weight: 900;
+
+          .card_slides
+            margin-top: 40px;
+            margin-left: -20px;
+            margin-right: -20px;
+            padding-top: 40px;
+            border-top: 2px solid $grey-lighter;
+          
+
 
 .homeCards_close 
   position: absolute;

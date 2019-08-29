@@ -11,7 +11,8 @@ class IndexPageTemplate extends React.Component {
     super();
 
     this.state = {
-      cardsOpen: false
+      cardsOpen: false,
+      arrow: true
     }
 
     this.toggleCards = this.toggleCards.bind(this);
@@ -21,6 +22,12 @@ class IndexPageTemplate extends React.Component {
   toggleCards() {
     this.setState({
       cardsOpen: !this.state.cardsOpen
+    });
+  }
+
+  toggleArrow(){
+    this.setState({
+      arrow: !this.state.arrow
     });
   }
 
@@ -48,7 +55,7 @@ class IndexPageTemplate extends React.Component {
           </div>
 
           <button 
-            className="homeCards_close"
+            className={`homeCards_close arrow-${this.state.arrow}`}
             onClick={this.toggleCards}
           >
           </button>
@@ -60,6 +67,7 @@ class IndexPageTemplate extends React.Component {
           <HomeCards
             cards={this.props.cards}
             action={this.handler}
+            arrow={this.toggleArow}
           />
 
           <div className="indexPage_about-callout">

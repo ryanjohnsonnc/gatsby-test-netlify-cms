@@ -4,12 +4,6 @@ import Slider from "react-slick"
 
 
 class HomeMobileSlides extends React.Component {
-  // constructor(){
-  //   super();
-
-    
-  // }
-
   render() {
     var mobileSettings = {
       dots: true,
