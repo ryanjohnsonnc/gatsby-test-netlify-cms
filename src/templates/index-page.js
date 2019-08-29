@@ -13,24 +13,45 @@ class IndexPageTemplate extends React.Component {
     this.state = {
       cardsOpen: false
     }
+
+    this.toggleCards = this.toggleCards.bind(this);
+    this.handler = this.handler.bind(this);
+  }
+
+  toggleCards() {
+    this.setState({
+      cardsOpen: !this.state.cardsOpen
+    });
+  }
+
+  handler(){
+    this.setState({
+      cardsOpen: !this.state.cardsOpen
+    });
   }
 
   render() {
     return (
       <div className="c_indexPage has-background-black section">
-        <div className="indexPage_content container">
-          <div className="columns">
+        <div className={`indexPage_content cardsOpen-${this.state.cardsOpen} container`}>
+          <div className="columns indexPage_content-container">
             <header className="indexPage_header column is-6">
               <h1 className="is-size-4 is-uppercase has-text-weight-bold">{this.props.headline}</h1>
               <p>{this.props.intro}</p>
-              <Link className="button is-primary first" to="/about">
+              <button className="button is-primary first" onClick={this.toggleCards}>
                 Learn More
-              </Link>
+              </button>
               <Link className="button is-primary is-hollow" to="/about">
                 See Projects
               </Link>
             </header>
           </div>
+
+          <button 
+            className="homeCards_close"
+            onClick={this.toggleCards}
+          >
+          </button>
 
           <HomeCardsMobile
             cards={this.props.cards}
@@ -38,6 +59,7 @@ class IndexPageTemplate extends React.Component {
 
           <HomeCards
             cards={this.props.cards}
+            action={this.handler}
           />
 
           <div className="indexPage_about-callout">

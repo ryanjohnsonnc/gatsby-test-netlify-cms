@@ -44,6 +44,12 @@
     p 
       display: block;
       color: white;
+    
+    .cardsOpen-true & 
+      @include opacity(0);
+    
+    .cardsOpen-false
+      @include opacity(1);
 
 .indexPage_about-callout 
   display: block;
@@ -77,3 +83,10 @@
     bottom: 0px;
     left: 0px;
     width: 100%;
+
+.indexPage_content-container
+  position: relative;
+  z-index: 9;
+
+  .cardsOpen-true  
+    z-index: 1;
