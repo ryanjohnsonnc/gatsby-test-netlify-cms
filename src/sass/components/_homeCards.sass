@@ -86,6 +86,16 @@
       &:nth-of-type(3)
         right: 7%;
 
+  .single-open-true & 
+    display: none;
+
+    &.card-open
+      display: block;
+      width: 100%;
+      z-index: 12;
+      left: 0px;
+      @include translate(0%, 0px);
+
 .homeCards_close 
   position: absolute;
   z-index: 10;
