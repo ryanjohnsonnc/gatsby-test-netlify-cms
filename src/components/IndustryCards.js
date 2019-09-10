@@ -1,44 +1,97 @@
 import React from 'react'
-//import PropTypes from 'prop-types'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import PropTypes from 'prop-types'
+// import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const IndustryCards = ({ cards }) => (
+class IndustryCards extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      popoverContent: '',
+      popoverImage: '',
+    };
+
+    this.updatePopover = this.updatePopover.bind(this);
+  }
+
+  updatePopover = (content, image) => {      
+    this.setState({
+      popoverContent: content,
+      popoverImage: image
+    })
+  }
   
-  <section className={`section c_industryCards has-background-grey-lighter`}>
-    <div className="container">
-      <div className="columns industryCards_wrapper">
-        {cards.map(card => (
-          <div key={card.industry} className="column industryCards_card">
-            <h3 className="title">{card.industry}</h3>
-            <p>{card.industryShort}</p>
+  render() {
+    return (
+      <section className={`section c_industryCards has-background-grey-lighter ${this.state.popoverContent}`}>
+        <div className="container">
+          <div className="columns industryCards_wrapper">
+            {this.props.cards.map(card => (
+              <IndustryCard
+                key={card.industry}
+                industry={card.industry}
+                industryShort={card.industryShort}
+                info={card.industryInfo}
+                handler = {this.updatePopover}
+              />
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="industryCards_infoBox">
-        {cards.map(card => (
-          <div key={card.industry} className="infoBox_item columns">
-            <div className="column">
-              <p>{card.industryInfo.industryLong}</p>
-            </div>
-            <div className="column">
-              <PreviewCompatibleImage imageInfo={card.industryInfo.industryImage} />
+          <div className="industryCards_infoBox">
+            <div className="infoBox_item columns">
+              <div className="column">
+                <p>{this.state.popoverContent}</p>
+              </div>
+              <div className="column">
+                <img alt='Industry Photograph' className="infoBox_image" src={this.state.popoverImage} />
+              </div>
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-)
+        </div>
+      </section>
+    )
+  }
+}
 
-// IndustryCards.propTypes = {
-//   cards: PropTypes.arrayOf({
-//     industry: PropTypes.string,
-//     industryShort: PropTypes.string,
-//     industryInfo: PropTypes.shape({
-//       industryLong: PropTypes.string,
-//       //industryImage: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-//     })
-//   })
-// }
+IndustryCards.propTypes = {
+  cards: PropTypes.array,
+}
+
+// INDIVIDUAL CARD COMPONENT (Main Piece Here)
+class IndustryCard extends React.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      popoverContent: '',
+      popoverImage: '',
+    };
+  }
+
+  sendData = () => {
+    this.props.handler(this.props.info.industryLong, this.props.info.industryImage.childImageSharp.fluid.src);
+
+  }
+
+  render() {
+
+    return (
+      <div 
+        key={this.props.industry} 
+        className={`column industryCards_card`}
+        onMouseEnter={this.sendData}
+      >
+        <h3 className="title">{this.props.industry}</h3>
+        <p>{this.props.industryShort}</p>
+      </div>
+    )
+  }
+}
+
+IndustryCard.propTypes = {
+  industry: PropTypes.string,
+  industryShort: PropTypes.string,
+  info: PropTypes.object,
+}
+
 
 export default IndustryCards
