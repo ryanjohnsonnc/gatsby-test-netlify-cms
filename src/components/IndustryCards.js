@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import $ from 'jquery';
 
 class IndustryCards extends React.Component {
   constructor() {
@@ -20,6 +21,13 @@ class IndustryCards extends React.Component {
       popoverImage: image
     })
   }
+
+  componentDidMount() {
+    // Simulate hover on first industry card
+    var firstCard = $('.c_industryCards .industryCards_card:first-of-type');
+
+    firstCard.mouseover();
+  }
   
   render() {
     return (
@@ -38,10 +46,10 @@ class IndustryCards extends React.Component {
           </div>
           <div className="industryCards_infoBox">
             <div className="infoBox_item columns">
-              <div className="column">
+              <div className="column content-column">
                 <p>{this.state.popoverContent}</p>
               </div>
-              <div className="column">
+              <div className="column image-column">
                 <img alt='Industry Photograph' className="infoBox_image" src={this.state.popoverImage} />
               </div>
             </div>
@@ -69,7 +77,6 @@ class IndustryCard extends React.Component {
 
   sendData = () => {
     this.props.handler(this.props.info.industryLong, this.props.info.industryImage.childImageSharp.fluid.src);
-
   }
 
   render() {

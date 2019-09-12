@@ -50,8 +50,18 @@
       .infoBox_item
         display: none;
         &:first-of-type 
-          display: flex;
+          @include flexbox;
 
       p 
         color: white;
+
+      .content-column
+        @include flex(0 1 40%);
+
+      .image-column 
+        @include flex(0 1 50%);
+        margin-left: 10%;
+
+        .infoBox_image 
+          width: 100%;
       
