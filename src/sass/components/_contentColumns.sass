@@ -25,7 +25,12 @@
       .columns 
         position: relative;
         margin-left: 32px;
-        @include transition;
+        @include transition(all .3s ease);
+
+        &.hover-first 
+          @include transition(all .3s ease);
+          &:after 
+            @include transition(all .3s ease);
 
         &:after 
           content: '';
@@ -33,11 +38,13 @@
           top: 32px;
           bottom: -32px;
           left: -32px;
-          width: 50%;
+          right: 50%;
+
           border: 2px solid $primary;
           @include transition(all .3s ease);
 
         &.hover-second 
           &:after 
-            left: auto;
-            right: -32px;    
+            left: 50%;
+            right: -32px;  
+            @include transition(all .3s ease);  

@@ -77,19 +77,18 @@ class TeamCards extends React.Component {
                     >
                       {post.frontmatter.name}
                     </span>
-
-                    <button 
-                      onClick={this.openModal} 
-                      data-name={post.frontmatter.name}
-                      data-title={post.frontmatter.title}
-                      data-bio={post.frontmatter.bio}
-                      className="card_link is-size-7 has-text-weight-bold"
-                    >
-                      Open Modal
-                    </button>
                   </div>
                 </div>
-
+                <div 
+                  href="/here"
+                  onClick={this.openModal} 
+                  data-name={post.frontmatter.name}
+                  data-title={post.frontmatter.title}
+                  data-bio={post.frontmatter.bio}
+                  className="card_link is-size-7 has-text-weight-bold"
+                >
+                  Open Modal
+                </div>
                 
               </div>
             ))}

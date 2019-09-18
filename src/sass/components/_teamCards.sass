@@ -1,9 +1,46 @@
 // Team Card Item
 .teamCards_card
   position: relative;
+  cursor: pointer;
   .card_image 
+    position: relative;
     margin-bottom: 16px;
-  
+
+    &:after 
+      content: '';
+      z-index: 2;
+      position: absolute;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      background-color: $primary;
+      @include opacity(0);
+      @include transition(all .3s ease);
+
+    &:before 
+      content: 'Read Bio';
+      z-index: 4;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 50%;
+      @include translate(-50%, -50%);
+      color: white;
+      @include opacity(0);
+      @include transition(all .3s ease);
+  .card_wrapper 
+    position: relative;
+
+  .card_link
+    position: absolute; 
+    z-index: 99;
+    top: 0px;
+    left: 0px
+    bottom: 0px;
+    right: 0px;
+    text-indent: -999999px;
+    cursor: pointer;
 
   .card_info
     padding-left: 8px;
@@ -12,16 +49,16 @@
     .card_title
       padding-left: 8px;
 
-    .card_link 
-      padding-left: 8px;
-      +tablet 
-        position: absolute;
-        right: 0px;
-        top: 0px;
+  &:hover // hover actions for the team card
+    .card_image 
+      &::after, &:before
+        @include opacity(.8);
+
 
 .teamCards_header 
   margin-bottom: 80px;
 
-
 .teamSection
   @include section-padding(80px, 124px 0px 160px 0px); 
+
+

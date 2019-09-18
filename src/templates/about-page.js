@@ -143,7 +143,7 @@ export const aboutPageQuery = graphql`
             industryLong
             industryImage {
               childImageSharp {
-                fluid(maxWidth: 120, quality: 100) {
+                fluid(maxWidth: 600, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }

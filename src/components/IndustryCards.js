@@ -8,7 +8,7 @@ class IndustryCards extends React.Component {
     super();
 
     this.state = {
-      popoverContent: '',
+      popoverContent: 'Please hover over a column to see more content.',
       popoverImage: '',
     };
 

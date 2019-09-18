@@ -10,16 +10,9 @@ import vimeo from '../img/social/vimeo.svg'
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
-          <img
-            src={logo}
-            alt="Kaldi"
-            style={{ width: '14em', height: '10em' }}
-          />
-        </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
+      <footer className="global has-background-grey-light has-text-white-ter">
+        <div className="content has-text-centered has-background-grey-light has-text-white-ter">
+          <div className="container has-background-grey-light has-text-white-ter">
             <div className="columns">
               <div className="column is-4">
                 <section className="menu">
@@ -74,6 +67,11 @@ const Footer = class extends React.Component {
                 </section>
               </div>
               <div className="column is-4 social">
+                <img
+                  src={logo}
+                  alt="Kaldi"
+                  style={{ width: '180px', height: '30px' }}
+                />
                 <a title="facebook" href="https://facebook.com">
                   <img
                     src={facebook}
