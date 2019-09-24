@@ -64,17 +64,11 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item has-text-weight-bold is-size-4" to="/about">
                 About
               </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/blog">
-                Blog
+              <Link className="navbar-item has-text-weight-bold is-size-4" to="/about">
+                Projects
               </Link>
               <Link className="navbar-item has-text-weight-bold is-size-4" to="/contact">
                 Contact
-              </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/contact/examples">
-                Form Examples
               </Link>
             </div>
             <div className="navbar-end has-text-centered">

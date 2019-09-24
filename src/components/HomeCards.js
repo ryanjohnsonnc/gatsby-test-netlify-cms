@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Slider from "react-slick"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { CarouselProvider, Dot, DotGroup, Slider, Slide} from 'pure-react-carousel'
+import 'pure-react-carousel/dist/react-carousel.es.css'
+
+//This file contains 3 components (HomeCards, HomeCard, CardCarousel)
 
 class HomeCards extends React.Component {
   constructor(){
@@ -45,13 +46,14 @@ HomeCards.propTypes = {
   cards: PropTypes.array,
 }
 
+
 // INDIVIDUAL CARD COMPONENT (Main Piece Here)
-class HomeCard extends React.Component {
+export class HomeCard extends React.Component {
   constructor(){
     super();
 
     this.state = {
-      cardOpen: false,
+      cardOpen: false
     };
 
     this.toggleSingleCard = this.toggleSingleCard.bind(this);
@@ -70,17 +72,6 @@ class HomeCard extends React.Component {
 
   render() {
     const cardOpen = this.state.cardOpen;
-    
-    var desktopSettings = {
-      dots: true,
-      controls: false,
-      arrows: false,
-      infinite: false,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      centerMode: false,
-    };
 
     return (
       <div key={this.props.title} className={`homeCards_card ${this.state.cardOpen ? 'card-open': ''} `}>
@@ -98,20 +89,15 @@ class HomeCard extends React.Component {
                 <div className="card_content-left">
                   <p>{this.props.quote}</p>
                 </div>
-                <div className="card_content-right">
-                  <Slider {...desktopSettings}>
-                    {this.props.slides.map(slide => (
-                      <div className="slide solution_slide" key={slide.title}>
-                        <h3 className="is-size-3 is-uppercase has-text-weight-bold">{slide.title}</h3>
-                        <p className="is-size-4 has-text-weight-bold">{slide.content}</p>
-                      </div>
-                    ))}
-                  </Slider>
+                <div className={`card_content-right card-${this.state.cardOpen ? 'open': 'closed'} `}>
+                  <CardCarousel
+                   slides={this.props.slides}
+                  />
                   <button 
                     onClick={this.toggleSingleCard}
-                    className="button is-primary is-thin"
+                    className="modal_close"
                   >
-                    Explore More
+                    +
                   </button>
                 </div>
               </div>
@@ -126,7 +112,6 @@ class HomeCard extends React.Component {
                 </button>
               </div>
             )}
-              
           </div>
         </div>
       </div>
@@ -138,6 +123,41 @@ HomeCard.propTypes = {
   title: PropTypes.string,
   image: PropTypes.array,
   quote: PropTypes.string,
+  slides: PropTypes.array,
+}
+
+
+export class CardCarousel extends React.Component {
+  render() {
+    return (
+      <CarouselProvider
+        naturalSlideWidth={100}
+        naturalSlideHeight={125}
+        totalSlides={this.props.slides.length}
+        orientation="horizontal"
+      >
+        <Slider>
+          {this.props.slides.map(slide => (
+            <Slide className="slide solution_slide" key={slide.title}>
+              <div>
+                <h3 className="is-size-4 is-uppercase has-text-weight-bold">{slide.title}</h3>
+              </div>
+              <p className="is-size-3 has-text-weight-bold">{slide.content}</p>
+            </Slide>
+          ))}
+        </Slider>
+        <DotGroup
+          className="carousel_nav"
+          dotNumbers="true"
+          showAsSelectedForCurrentSlideOnly="true"
+        >
+        </DotGroup>
+      </CarouselProvider>
+    )
+  }
+}
+
+CardCarousel.propTypes = {
   slides: PropTypes.array,
 }
 

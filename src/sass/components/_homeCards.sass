@@ -106,22 +106,24 @@
       left: 0px;
       @include translate(0%, 0px);
       @include opacity(1);
+      overflow: hidden;
 
       & > * 
         @include opacity(1);
       
       .card_content 
-        @include flex(1 0 60%);
+        @include flex(0 1 96%);
+        @include flexbox;
 
       .card_wrapper
         @include flexbox;
         @include align-items(stretch);
       
       .card_image
-        @include flex(1 0 40px);
+        @include flex(0 1 4%);
         white-space: nowrap;
         margin: 0px;
-        height: 610px;
+        height: 560px;
 
         .title
           @include rotate(270);
@@ -130,16 +132,36 @@
       
       .card_content--open
         @include flexbox;
-        white-space: normal;
+        @include align-items(center);
+
+        height: 100%;
 
         .card_content-left
-          @include flex(1 0 398px);
+          @include flex(0 1 398px);
           padding: 0px 52px;
           text-align: center;
+          border-right: 2px solid $grey-lighter;
 
         .card_content-right
-          @include flex(1 0 60%);
+          @include flexbox;
+          @include flex(0 1 60%);
+          max-width: 60%;
+          overflow: hidden;
+          @include box-sizing; 
+          position: relative;
+          padding: 0px 48px;
 
+          .carousel 
+            display: block;
+            height: 100%;
+            width: 100%;
+
+            .carousel__inner-slide
+              @include flexbox;
+              @include flex-direction(column);
+              @include justify-content(center);
+
+          
           .modal_close
             position: absolute;
             top: 0px;
@@ -149,8 +171,9 @@
             appearance: none;
             -moz-appearance: none;
             border: none;
-            font-size: 24px;
-            font-weight: 900;
+            font-size: 32px;
+            font-weight: 400;
+            @include rotate(45);
 
           .card_slides
             margin-top: 40px;
@@ -158,8 +181,6 @@
             margin-right: -20px;
             padding-top: 40px;
             border-top: 2px solid $grey-lighter;
-          
-
 
 .homeCards_close 
   position: absolute;
@@ -178,4 +199,60 @@
     right: auto;
     left: 0px;
 
+.solution_slide
+  text-align: left;
+  h3 
+    display: inline-block;
+    margin-bottom: 24px;
+    padding: 4px 12px;
+    background-color: $pink;
+    color: white;
+    @include default-border;
+    font-size: 24px;
+  
+  p 
+    line-height: 1.2em;
+
+
+.carousel_nav
+  position: absolute;
+  bottom: 32px;
+  left: 0px;
+  width: 100%;
+  text-align: right;
+
+  .carousel__dot 
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    border: none;
+    color: $grey-lighter;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-block;
+    vertical-align: middle;
+
+    span 
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 0px;
+
+    &:after 
+      position: relative;
+      content: '...';
+      display: inline-block;
+      color: $grey-lighter;
+      margin-left: 8px;
+      margin-right: -6px;
+      vertical-align: middle;
+      top: -4px;
+
+    &:last-of-type 
+      &::after
+        display: none;
+  .carousel__dot--selected 
+    color: $pink;
+
+    
   
