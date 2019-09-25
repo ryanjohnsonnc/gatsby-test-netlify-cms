@@ -108,3 +108,31 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Featured Image", name: "featuredimage", widget: image}
       - {label: "Bio", name: "bio", widget: "markdown"}
+  
+  - name: "projects"
+    label: "Projects"
+    folder: "src/pages/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "project"}
+      - {label: "Category Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "featuredimage", widget: image}
+      - {label: "Projects",
+        name: "projectList",
+        widget: "list",
+        fields: 
+          [
+          {label: "Title", name: "title", widget: "string", default: "Location/Client Name"},
+          {label: "Slides",
+            name: "projectSlides",
+            widget: "list",
+            fields: 
+              [
+                {label: "Slide Text", name: "slideDescription", widget: "text", default: ""},
+                {label: "Slide Image", name: "slideImage", widget: "image", default: "/img/emmet.jpg"}
+              ]
+          }
+          ]
+        }
+      

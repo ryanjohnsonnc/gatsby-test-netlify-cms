@@ -193,11 +193,12 @@
   background-size: contain;
   background-image: url('../img/arrow-white.svg');
   background-repeat: no-repeat;
-  @include transition(all 1s ease);
+  @include transition(all .8s ease);
   
   .cardsOpen-true & 
-    right: auto;
-    left: 0px;
+    right: 100%;
+
+    @include rotate(180);
 
 .solution_slide
   text-align: left;

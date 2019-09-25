@@ -4,7 +4,6 @@ import { CarouselProvider, Dot, DotGroup, Slider, Slide} from 'pure-react-carous
 import 'pure-react-carousel/dist/react-carousel.es.css'
 
 //This file contains 3 components (HomeCards, HomeCard, CardCarousel)
-
 class HomeCards extends React.Component {
   constructor(){
     super();
