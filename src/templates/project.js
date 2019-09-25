@@ -27,7 +27,7 @@ export default class Project extends React.Component {
                   <a href="#" class="page_title-nav-item is-size-6 has-text-white-">{project.title}</a>
                 ))}
               </div>
-              <div className="column is-9 page_content">
+              <div className="column is-9">
                 <ProjectsList
                   projects={frontmatter.projectList}
                 />
@@ -66,7 +66,11 @@ export class ProjectsList extends React.Component {
                 <header className="slide_header">
                   <h2 className="title is-size-4 has-text-weight-bold">{project.title}</h2>
                 </header>
-                <img src={project.previewImage.childImageSharp.fluid.src} />
+                <img className="slide_image" alt="Basic Descriptions" src={project.previewImage.childImageSharp.fluid.src} />
+              
+                <ProjectSlider
+                  images={project.projectSlides}
+                />
               </Slide>  
             ))}
           </Slider>
@@ -80,6 +84,43 @@ ProjectsList.propTypes = {
   projects: PropTypes.array,
 }
 
+
+export class ProjectSlider extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { 
+      sliderOpen: false,
+    }
+  }
+
+  render() {
+    return (
+      <div className={`c_project_slider slider_visible--${this.state.sliderOpen}`}>
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={125}
+          totalSlides={this.props.images.length}
+          orientation="horizontal"
+        >
+          <Slider>
+            {this.props.images.map((image, i) => (
+              <Slide key={i}>
+                
+                <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
+              
+          
+              </Slide>  
+            ))}
+          </Slider>
+        </CarouselProvider>
+      </div>
+    )
+  }
+}
+
+ProjectSlider.propTypes = {
+  images: PropTypes.array,
+}
 
 
 export const pageQuery = graphql`
@@ -122,35 +163,7 @@ export const pageQuery = graphql`
 `
 
 
-export class ProjectSlider extends React.Component {
-  render() {
-    return (
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={this.props.slides.length}
-        orientation="horizontal"
-      >
-        <Slider>
-          {this.props.slides.map((slide, i) => (
-            <div key={i}>
-              {slide.title}
-              {/* {slide.projectSlides.map((item, j) => (
-                <p key={j}>{item.description}</p>
-              ))} */}
-            </div>
-            
-              
-          ))}
-        </Slider>
-      </CarouselProvider>
-    )
-  }
-}
 
-ProjectSlider.propTypes = {
-  slides: PropTypes.array,
-}
 
 
 // <Slide className="slide project_slide" key={slide.title}>

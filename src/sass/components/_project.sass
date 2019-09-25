@@ -1,12 +1,31 @@
+
+
 .c_projectsList 
   .carousel
     .carousel__slider 
       overflow: visible; 
+
+      .carousel__slide
+        padding-top: 100px;
+        border-right: 1px solid $grey-lighter;
+        text-align: right;
+        overflow: hidden;
+        height: 100vh;
+
       .carousel__inner-slide
         position: relative;
-
+        
         .slide_header 
           margin-bottom: 60px;
           padding: 0px 48px;
+          text-align: left;
+
+          .title
+            color: #2F2F2F;
+
+        .slide_image
+          @include translate(30%, 0px);
+          max-height: 56px;
+
 
 
