@@ -124,6 +124,7 @@ collections:
         fields: 
           [
           {label: "Title", name: "title", widget: "string", default: "Location/Client Name"},
+          {label: "Featured Image", name: "previewImage", widget: image},
           {label: "Slides",
             name: "projectSlides",
             widget: "list",

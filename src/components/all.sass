@@ -144,6 +144,7 @@ $menu-label-color: $white-ter
 @import "../sass/components/homeCards"
 @import "../sass/components/contactForm"
 @import "../sass/components/homeMobileSlides"
+@import "../sass/components/project"
 
 
 .container 
@@ -196,6 +197,10 @@ footer.global
     margin-left: auto;
     margin-right: auto;
     padding: 80px 1.5rem;  
+
+  .page_title-nav-item
+    display: none;
+
   .page_content
     padding: 80px 1.5rem;
 
@@ -222,10 +227,23 @@ footer.global
           top: 50%;
           left: -140px;
           width: 443px;
-          // @include translate(-50%, 0px);
-          // @include rotate(-90);
           @include transform(rotate(-90deg) translateY(-50%));
-      
+
+        &.page_title--upright 
+          h1 
+            position: relative;
+            left: auto;
+            top: auto;
+            width: auto;
+            margin-bottom: 30px;
+            @include transform(rotate(-0deg) translateY(-0%));
+          
+          .page_title-nav-item 
+            display: block;
+            margin-bottom: 24px;
+            color: $grey;
+            font-weight: 700;
+
       .page_content
         padding: 120px 1.5rem;
     
