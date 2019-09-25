@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { CarouselProvider, Slider, Slide} from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -52,22 +52,26 @@ Project.propTypes = {
 export class ProjectsList extends React.Component {
   render() {
     return (
-      <CarouselProvider
-        naturalSlideWidth={100}
-        naturalSlideHeight={125}
-        totalSlides={this.props.projects.length}
-        orientation="horizontal"
-        visibleSlides="2"
-      >
-        <Slider>
-          {this.props.projects.map((project, i) => (
-            <Slide key={i}>
-              {project.title}
-              <img src={project.previewImage.childImageSharp.fluid.src} />
-            </Slide>  
-          ))}
-        </Slider>
-      </CarouselProvider>
+      <div className="c_projectsList">
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={125}
+          totalSlides={this.props.projects.length}
+          orientation="horizontal"
+          visibleSlides="2"
+        >
+          <Slider>
+            {this.props.projects.map((project, i) => (
+              <Slide key={i}>
+                <header className="slide_header">
+                  <h2 className="title is-size-4 has-text-weight-bold">{project.title}</h2>
+                </header>
+                <img src={project.previewImage.childImageSharp.fluid.src} />
+              </Slide>  
+            ))}
+          </Slider>
+        </CarouselProvider>
+      </div>
     )
   }
 }
