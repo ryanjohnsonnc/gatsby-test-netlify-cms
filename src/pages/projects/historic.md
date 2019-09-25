@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: Historic
+title: 'Historic '
 featuredimage: /img/flavor_wheel.jpg
 projectList:
   - projectSlides:
