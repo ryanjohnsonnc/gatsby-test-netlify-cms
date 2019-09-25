@@ -57,12 +57,13 @@ export class ProjectsList extends React.Component {
         naturalSlideHeight={125}
         totalSlides={this.props.projects.length}
         orientation="horizontal"
+        visibleSlides="2"
       >
         <Slider>
           {this.props.projects.map((project, i) => (
             <Slide key={i}>
               {project.title}
-              <img src={project.featuredimage.childImageSharp.fluid.src} />
+              <img src={project.previewImage.childImageSharp.fluid.src} />
             </Slide>  
           ))}
         </Slider>
