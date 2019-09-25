@@ -6,6 +6,8 @@ projectList:
   - projectSlides:
       - slideDescription: Testttt
         slideImage: /img/blog-index.jpg
-    title: Location/Client Name
+    title: JW Miami Turnberry
+  - title: Ballantyne Hotel
+  - title: Conrad Ft. Lauderdale
 ---
 
