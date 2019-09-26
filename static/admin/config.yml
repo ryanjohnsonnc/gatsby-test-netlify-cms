@@ -130,7 +130,7 @@ collections:
             widget: "list",
             fields: 
               [
-                {label: "Slide Text", name: "slideDescription", widget: "text", default: ""},
+                {label: "Slide Text", name: "slideDescription", widget: "text", required: false},
                 {label: "Slide Image", name: "slideImage", widget: "image", default: "/img/emmet.jpg"}
               ]
           }

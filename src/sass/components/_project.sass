@@ -1,9 +1,64 @@
 .page_wrapper 
   position: relative;
 
+.c_project
+  .page_title
+    .page_subnav
+      display: block;
+      position: relative;
+      z-index: 8;
+      margin-top: 100px;
+      max-height: 0px;
+      overflow: hidden;
+      @include transition(all .3s ease);
+      
+      h1
+        margin-bottom: 24px;
+        max-height: 2000px;
+
+      .page_title-nav-item 
+        display: block;
+        position: relative;
+        margin-bottom: 24px;
+        padding-left: 0px;
+        color: $grey;
+        font-weight: 700;
+        @include clean-button;
+        cursor: pointer;
+
+        &:after 
+          content: '';
+          display: block;
+          position: absolute;
+          z-index: -1;
+          left: 0px;
+          bottom: 2px;
+          height: 6px;
+          background-color: $pink;
+          width: 0px;
+          @include transition(all .3s ease);
+
+
+        &.active 
+          color: white;
+          padding-left: 12px;
+
+          &:after
+            width: 100%;
+
+    &.show-subnav--true
+      .main-title 
+        @include opacity(0);
+        max-height: 0px;
+      
+      .page_subnav
+        max-height: 300px;
+          
+
 .c_projectsList 
   width: 100%;
   height: 100vh;
+  z-index: 3;
   overflow: visible;
   @include scale(1);
   @include transition(all .6s ease);
@@ -18,7 +73,7 @@
     width: 380px;
     height: 100%; 
     overflow: hidden;
-    padding-top: 100px;
+    padding-top: 130px;
     border-right: 1px solid $grey-lighter;
     text-align: right;
     overflow: hidden;
@@ -47,6 +102,7 @@
       @include translate(30%, 0px);
       max-height: 586px;
       @include transition(all .3s ease);
+      @include default-border;
 
     &:hover 
       cursor: pointer;
@@ -69,12 +125,13 @@
 
       .carousel__inner-slide
         position: relative;
-
-        
+     
 
 .c_projectSlider
-  display: none;
+  display: block;
+  overflow: visible;
   position: absolute;
+  z-index: 7;
   top: 0px;
   left: 0px;
   right: 0px;
@@ -82,6 +139,9 @@
   background-color: white;
   @include scale(0);
   @include transition(all .3s ease);
+
+  .projectSlider_wrapper 
+    overflow: visible !important;
 
   .project-visible--0 &
     &.project--0
@@ -98,4 +158,81 @@
       @include scale(1);
       display: block;
 
+  .projectSlider_back
+    position: absolute;
+    top: 100px;
+    left: 24px;    
+    cursor: pointer;
+    @include clean-button;
+    @include transition(all .8s ease);
 
+    .arrow
+      display: inline-block;
+      vertical-align: middle;
+      height: 14px;
+      width: 22px;
+      background-size: contain;
+      background-image: url('../img/arrow-dark.svg');
+      background-repeat: no-repeat;
+    
+    .text 
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-left: 12px;
+      @include transition(all .3s ease);
+    
+    &:hover,
+    &:focus 
+      .text 
+        margin-left: 20px;
+    
+
+  .slide 
+    position: relative;
+    width: 360px;
+    height: 100%; 
+    overflow: hidden;
+    padding-top: 160px;
+    border-right: 1px solid $grey-lighter;
+    text-align: right;
+    overflow: hidden;
+
+    .slide_image-wrapper
+      text-align: right;
+      position: relative;
+      margin-right: 0px;
+      max-height: 586px;
+      width: 90%;
+      margin-left: 10%;
+      @include transition(all .5s ease);
+      @include default-border;
+      overflow: hidden;
+
+    .slide_image
+      position: relative;
+      z-index: 3;
+      @include opacity(1);
+      @include transition(all .5s ease);
+
+    .slide_content
+      position: absolute;
+      z-index: 2;
+      top: 0px;
+      left: 0px;
+      bottom: 0px;
+      right: 0px;
+      background-color: $pink;
+      padding: 32px;
+      text-align: left;
+
+      & > * 
+        color: white;
+
+    &:hover,
+    &:focus
+      .slide_image
+        @include opacity(0);
+      

@@ -22,6 +22,19 @@ export default class Project extends React.Component {
     })
   }
 
+  changeProject = e => {      
+    this.setState({
+      project: e.target.attributes['data-project'].value
+    })
+  }
+
+  closeProject = project => {      
+    this.setState({
+      projectOpen: false,
+      project: 99
+    })
+  }
+
   render() {
     const { frontmatter } = this.props.data.markdownRemark
 
@@ -30,11 +43,21 @@ export default class Project extends React.Component {
         <div className={`page c_project page_title--left is-flex`}>
           <div className="container">
             <div className="columns is-flex">
-              <div className={`column is-3 page_title has-background-black`}>
-                <h1 className="is-size-1 has-text-weight-bold has-text-white">{frontmatter.title}</h1>
-                {frontmatter.projectList.map(project => (
-                  <a href="#" className="page_title-nav-item is-size-6 has-text-white-">{project.title}</a>
-                ))}
+              <div className={`column is-3 page_title has-background-black show-subnav--${this.state.projectOpen}`}>
+                <h1 className="is-size-1 has-text-weight-bold has-text-white main-title">{frontmatter.title}</h1>
+                <div className="page_subnav">
+                  <h1 className="is-size-4 has-text-weight-bold has-text-white">{frontmatter.title}</h1>
+
+                  {frontmatter.projectList.map((project, i) => (
+                    <button 
+                      data-project={i} 
+                      className={`page_title-nav-item is-size-6 ${this.state.project === i ? 'active' : ''}`}
+                      onClick={this.changeProject}
+                    >
+                      {project.title}
+                    </button>
+                  ))}
+                </div>
               </div>
               <div className={`column is-9 page_wrapper project-visible--${this.state.projectOpen} project-visible--${this.state.project}`}>
                 <ProjectsList
@@ -46,6 +69,7 @@ export default class Project extends React.Component {
                   <ProjectSlider
                     images={project.projectSlides}
                     project={i}
+                    handler={this.closeProject}
                   />
                 ))}
                 
@@ -123,10 +147,23 @@ export class ProjectSlider extends React.Component {
         >
           {this.props.images.map((image, i) => (
             <div className="slide" key={i}>
-              <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
+              <figure className="slide_image-wrapper">
+                <div className="slide_content">
+                  <p>{image.slideDescription}</p>
+                </div>
+                <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
+              </figure>
             </div>  
           ))}
         </HorizontalScroll>
+        
+        <button 
+          className={`projectSlider_back`}
+          onClick={this.props.handler}
+        >
+          <i className="arrow"></i>
+          <span className="text">Back</span>
+        </button>
       </div>
     )
   }

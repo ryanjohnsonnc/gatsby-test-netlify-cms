@@ -192,14 +192,17 @@ footer.global
 .page 
   position: relative
 
+  & > .container 
+    position: relative;
+    z-index: 7;
+
   .page_title 
+    position: relative;
+    z-index: 12;
     max-width: 95%;
     margin-left: auto;
     margin-right: auto;
     padding: 80px 1.5rem;  
-
-  .page_title-nav-item
-    display: none;
 
   .page_content
     padding: 80px 1.5rem;
@@ -208,42 +211,29 @@ footer.global
     &.page_title--left 
       height: 100vh;
       overflow: hidden;
-      &::before
-        content: '';
-        display: block;
-        z-index: 1;
-        position: absolute;
-        left: 0px;
-        top: 0px;
-        bottom: 0px;
-        right: 70%;
-        background-color: $black;
+      
       .page_title 
         position: relative
-        z-index: 2;
-        
-        h1
+        z-index: 8;
+
+        &::before
+          content: '';
+          display: block;
+          z-index: 1;
           position: absolute;
+          left: -2000px;
+          top: 0px;
+          bottom: 0px;
+          right: 0%;
+          background-color: $black;
+        
+        .main-title
+          position: absolute;
+          z-index: 8;
           top: 50%;
           left: -140px;
           width: 443px;
           @include transform(rotate(-90deg) translateY(-50%));
-
-        &.page_title--upright 
-          h1 
-            position: relative;
-            left: auto;
-            top: auto;
-            width: auto;
-            margin-bottom: 30px;
-            @include transform(rotate(-0deg) translateY(-0%));
-          
-          .page_title-nav-item 
-            display: block;
-            margin-bottom: 24px;
-            color: $grey;
-            font-weight: 700;
-
       .page_content
         padding: 120px 1.5rem;
     
