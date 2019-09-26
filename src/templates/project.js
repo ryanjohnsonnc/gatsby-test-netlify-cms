@@ -2,25 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import { CarouselProvider, Slider, Slide} from 'pure-react-carousel'
-import 'pure-react-carousel/dist/react-carousel.es.css'
 import HorizontalScroll from 'react-scroll-horizontal'
 
 export default class Project extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
-      projectOpen: false
+      projectOpen: false,
+      project: 99
     }
 
-    this.toggleProject = this.toggleProject.bind(this);
+    this.updateProject = this.updateProject.bind(this);
   }
 
-  toggleProject() {
+  updateProject = project => {      
     this.setState({
-      projectOpen: !this.state.projectOpen
-    });
-  };
+      projectOpen: !this.state.projectOpen,
+      project: project
+    })
+  }
 
   render() {
     const { frontmatter } = this.props.data.markdownRemark
@@ -36,16 +36,16 @@ export default class Project extends React.Component {
                   <a href="#" className="page_title-nav-item is-size-6 has-text-white-">{project.title}</a>
                 ))}
               </div>
-              <div className="column is-9">
+              <div className={`column is-9 page_wrapper project-visible--${this.state.projectOpen} project-visible--${this.state.project}`}>
                 <ProjectsList
                   projects={frontmatter.projectList}
+                  handler={this.updateProject}
                 />
 
-                {frontmatter.projectList.map(project => (
+                {frontmatter.projectList.map((project, i) => (
                   <ProjectSlider
                     images={project.projectSlides}
-                    visible={this.state.projectOpen}
-                    action={this.toggleProject}
+                    project={i}
                   />
                 ))}
                 
@@ -71,21 +71,28 @@ export class ProjectsList extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
+
     }
   }
 
-
-
+  sendData = (e) => {
+    this.props.handler(e.target.attributes['data-project'].value);
+  }
   render() {
     return (
       <div className="c_projectsList">
-        <HorizontalScroll>
+        <HorizontalScroll
+          reverseScroll = {true}
+          className     = {"project_wrapper"}
+          config        ={{ stiffness: 160, damping: 110 }}
+        >
           {this.props.projects.map((project, i) => (
-            <div>
+            <div className="project_slide">
               <div className="project_slide-wrapper">
                 <div 
                   className="project_trigger"
-                  onClick={this.props.action}
+                  onClick={this.sendData}
+                  data-project={i}
                 ></div>
                 <header className="slide_header">
                   <h2 className="title is-size-4 has-text-weight-bold">{project.title}</h2>
@@ -106,30 +113,20 @@ ProjectsList.propTypes = {
 
 
 export class ProjectSlider extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { 
-      sliderOpen: false,
-    }
-  }
-
   render() {
     return (
-      <div className={`c_projectSlider visible--${this.props.visible}`}>
-        <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={125}
-          totalSlides={this.props.images.length}
-          orientation="horizontal"
+      <div className={`c_projectSlider project--${this.props.project}`}>
+        <HorizontalScroll
+          reverseScroll = {true}
+          className     = {"projectSlider_wrapper"}
+          config        ={{ stiffness: 160, damping: 110 }}
         >
-          <Slider>
-            {this.props.images.map((image, i) => (
-              <Slide key={i}>
-                <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
-              </Slide>  
-            ))}
-          </Slider>
-        </CarouselProvider>
+          {this.props.images.map((image, i) => (
+            <div className="slide" key={i}>
+              <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
+            </div>  
+          ))}
+        </HorizontalScroll>
       </div>
     )
   }

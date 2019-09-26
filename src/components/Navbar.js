@@ -64,7 +64,7 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item has-text-weight-bold is-size-4" to="/about">
                 About
               </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/about">
+              <Link className="navbar-item has-text-weight-bold is-size-4" to="/projects/historic">
                 Projects
               </Link>
               <Link className="navbar-item has-text-weight-bold is-size-4" to="/contact">
