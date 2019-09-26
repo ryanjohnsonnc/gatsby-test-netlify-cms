@@ -33,6 +33,7 @@
     "react-helmet": "^5.2.0",
     "react-modal": "^3.9.1",
     "react-responsive-carousel": "^3.1.50",
+    "react-scroll-horizontal": "^1.6.2",
     "react-slick": "^0.25.2",
     "uuid": "^3.2.1"
   },

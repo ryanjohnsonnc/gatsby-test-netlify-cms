@@ -14,7 +14,18 @@
 
       .carousel__inner-slide
         position: relative;
+
+        .project_slide-wrapper
+          position: relative;
         
+        .project_trigger
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          bottom: 0px;
+          right: 0px;
+          z-index: 3;
+
         .slide_header 
           margin-bottom: 60px;
           padding: 0px 48px;
@@ -25,7 +36,21 @@
 
         .slide_image
           @include translate(30%, 0px);
-          max-height: 56px;
+          max-height: 586px;
 
+.c_projectSlider
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: white;
+  @include scale(0);
+  @include transition(all .3s ease);
+
+  &.visible--true 
+    @include scale(1);
+    display: block;
 
 

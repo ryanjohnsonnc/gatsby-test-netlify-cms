@@ -4,14 +4,23 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import { CarouselProvider, Slider, Slide} from 'pure-react-carousel'
 import 'pure-react-carousel/dist/react-carousel.es.css'
+import HorizontalScroll from 'react-scroll-horizontal'
 
 export default class Project extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
-
+      projectOpen: false
     }
+
+    this.toggleProject = this.toggleProject.bind(this);
   }
+
+  toggleProject() {
+    this.setState({
+      projectOpen: !this.state.projectOpen
+    });
+  };
 
   render() {
     const { frontmatter } = this.props.data.markdownRemark
@@ -24,13 +33,22 @@ export default class Project extends React.Component {
               <div className={`column is-3 page_title has-background-black`}>
                 <h1 className="is-size-1 has-text-weight-bold has-text-white">{frontmatter.title}</h1>
                 {frontmatter.projectList.map(project => (
-                  <a href="#" class="page_title-nav-item is-size-6 has-text-white-">{project.title}</a>
+                  <a href="#" className="page_title-nav-item is-size-6 has-text-white-">{project.title}</a>
                 ))}
               </div>
               <div className="column is-9">
                 <ProjectsList
                   projects={frontmatter.projectList}
                 />
+
+                {frontmatter.projectList.map(project => (
+                  <ProjectSlider
+                    images={project.projectSlides}
+                    visible={this.state.projectOpen}
+                    action={this.toggleProject}
+                  />
+                ))}
+                
               </div>
             </div>
           </div>
@@ -50,31 +68,33 @@ Project.propTypes = {
 
 
 export class ProjectsList extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { 
+    }
+  }
+
+
+
   render() {
     return (
       <div className="c_projectsList">
-        <CarouselProvider
-          naturalSlideWidth={100}
-          naturalSlideHeight={125}
-          totalSlides={this.props.projects.length}
-          orientation="horizontal"
-          visibleSlides="2"
-        >
-          <Slider>
-            {this.props.projects.map((project, i) => (
-              <Slide key={i}>
+        <HorizontalScroll>
+          {this.props.projects.map((project, i) => (
+            <div>
+              <div className="project_slide-wrapper">
+                <div 
+                  className="project_trigger"
+                  onClick={this.props.action}
+                ></div>
                 <header className="slide_header">
                   <h2 className="title is-size-4 has-text-weight-bold">{project.title}</h2>
                 </header>
                 <img className="slide_image" alt="Basic Descriptions" src={project.previewImage.childImageSharp.fluid.src} />
-              
-                <ProjectSlider
-                  images={project.projectSlides}
-                />
-              </Slide>  
-            ))}
-          </Slider>
-        </CarouselProvider>
+              </div>
+            </div>
+          ))}
+        </HorizontalScroll>
       </div>
     )
   }
@@ -95,7 +115,7 @@ export class ProjectSlider extends React.Component {
 
   render() {
     return (
-      <div className={`c_project_slider slider_visible--${this.state.sliderOpen}`}>
+      <div className={`c_projectSlider visible--${this.props.visible}`}>
         <CarouselProvider
           naturalSlideWidth={100}
           naturalSlideHeight={125}
@@ -105,10 +125,7 @@ export class ProjectSlider extends React.Component {
           <Slider>
             {this.props.images.map((image, i) => (
               <Slide key={i}>
-                
                 <img className="slide_image" alt="Basic Descriptions" src={image.slideImage.childImageSharp.fluid.src} />
-              
-          
               </Slide>  
             ))}
           </Slider>
