@@ -9,20 +9,24 @@ projectList:
         slideImage: /img/demo-screen-1.jpg
       - slideDescription: Testttt 2
         slideImage: /img/demo-screen-2.jpg
+      - slideDescription: Testt 3
+        slideImage: /img/demo-screen-1.jpg
+      - slideDescription: Test 44444
+        slideImage: /img/demo-screen-2.jpg
     title: JW Miami Turnberry
   - previewImage: /img/demo-screen-1.jpg
+    projectSlides:
+      - slideDescription: Testttt 1
+        slideImage: /img/demo-screen-1.jpg
+      - slideDescription: Testttt 2
+        slideImage: /img/demo-screen-2.jpg
     title: Ballantyne Hotel
-    projectSlides:
-      - slideDescription: Testttt 1
-        slideImage: /img/demo-screen-1.jpg
-      - slideDescription: Testttt 2
-        slideImage: /img/demo-screen-2.jpg
   - previewImage: /img/demo-screen-2.jpg
-    title: Conrad Ft. Lauderdale
     projectSlides:
       - slideDescription: Testttt 1
         slideImage: /img/demo-screen-1.jpg
       - slideDescription: Testttt 2
         slideImage: /img/demo-screen-2.jpg
+    title: Conrad Ft. Lauderdale
 ---
 
