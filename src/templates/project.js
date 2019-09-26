@@ -102,6 +102,10 @@ export class ProjectsList extends React.Component {
   sendData = (e) => {
     this.props.handler(e.target.attributes['data-project'].value);
   }
+
+  goToProjects = e => {
+    window.location = '/projects'
+  }
   render() {
     return (
       <div className="c_projectsList">
@@ -126,6 +130,14 @@ export class ProjectsList extends React.Component {
             </div>
           ))}
         </HorizontalScroll>
+
+        <button 
+          className={`projectSlider_back`}
+          onClick={this.goToProjects}
+        >
+          <i className="arrow"></i>
+          <span className="text">Back</span>
+        </button>
       </div>
     )
   }

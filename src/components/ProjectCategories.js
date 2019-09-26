@@ -1,21 +1,48 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import HorizontalScroll from 'react-scroll-horizontal'
+
 
 class ProjectCategories extends React.Component {
+  slideImageStyle = (src) => ({
+    backgroundImage: 'url(' + src + ')'
+  })
+
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    //post.frontmatter.featuredpost 
+    
     return (
-      <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
-            <div className="project_slide" key={post.id}>
-              {post.frontmatter.title}
-            </div>
+      <div className="c_projectCategories">
+        <HorizontalScroll
+          reverseScroll = {true}
+          className     = {"projectSlider_wrapper"}
+          config        ={{ stiffness: 160, damping: 110 }}
+        >
+          {posts && posts.map(({ node: post }) => (
+            <div className="slide">
+              <figure className="slide_image-wrapper">
+                <Link 
+                  className="slide_link" to={`/${post.fields.slug}`}>
+                  
+                </Link>
+                <span className="slide_title">{post.frontmatter.title}</span>
+                <div 
+                  className="slide_image" 
+                  style={this.slideImageStyle(post.frontmatter.featuredimage.childImageSharp.fluid.src)}
+                >
+                </div>
+              </figure>
+            </div>  
           ))}
+
+          <div className="slide slide--last">
+            <figure className="slide_image-wrapper">
+              
+            </figure>
+          </div> 
+        </HorizontalScroll>
       </div>
     )
   }
