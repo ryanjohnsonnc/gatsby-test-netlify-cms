@@ -7,6 +7,7 @@ module.exports = {
       'A pivotal part of brand messaging. A medium for delivering targeted, unified, powerful content. That’s what digital signage is all about. Learn how to make your message matter.',
   },
   plugins: [
+    'gatsby-plugin-transition-link',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {

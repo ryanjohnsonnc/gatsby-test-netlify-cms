@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import HorizontalScroll from 'react-scroll-horizontal'
-
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 class ProjectCategories extends React.Component {
   slideImageStyle = (src) => ({
@@ -23,10 +23,16 @@ class ProjectCategories extends React.Component {
           {posts && posts.map(({ node: post }) => (
             <div className="slide">
               <figure className="slide_image-wrapper">
-                <Link 
-                  className="slide_link" to={`/${post.fields.slug}`}>
+                <AniLink 
+                  cover 
+                  direction="left"
+                  bg="rebeccapurple" 
+                  className="slide_link" 
+                  to={`/${post.fields.slug}`}
                   
-                </Link>
+                >
+                  
+                </AniLink>
                 <span className="slide_title">{post.frontmatter.title}</span>
                 <div 
                   className="slide_image" 

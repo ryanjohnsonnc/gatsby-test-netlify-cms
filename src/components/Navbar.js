@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'gatsby'
+//import { Link } from 'gatsby'
 
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
@@ -42,9 +43,14 @@ const Navbar = class extends React.Component {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
+            <AniLink 
+              swipe
+              to="/" 
+              className="navbar-item" 
+              title="Logo"
+            >
               <img src={logo} alt="xpodigital" className={`${this.state.navBarActiveClass}`} style={{ width: '169px' }} />
-            </Link>
+            </AniLink>
             {/* Hamburger menu */}
             <div
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
@@ -61,15 +67,15 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start">
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/about">
+              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/about">
                 About
-              </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/projects">
+              </AniLink>
+              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/projects">
                 Projects
-              </Link>
-              <Link className="navbar-item has-text-weight-bold is-size-4" to="/contact">
+              </AniLink>
+              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/contact">
                 Contact
-              </Link>
+              </AniLink>
             </div>
             <div className="navbar-end has-text-centered">
               <a

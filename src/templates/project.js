@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import HorizontalScroll from 'react-scroll-horizontal'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 export default class Project extends React.Component {
   constructor(props) {
@@ -131,13 +132,16 @@ export class ProjectsList extends React.Component {
           ))}
         </HorizontalScroll>
 
-        <button 
+        <AniLink 
+          cover
+          direction="right"
+          to="/projects" 
           className={`projectSlider_back`}
-          onClick={this.goToProjects}
+          title="Back To Projects"
         >
           <i className="arrow"></i>
           <span className="text">Back</span>
-        </button>
+        </AniLink>
       </div>
     )
   }
@@ -224,22 +228,3 @@ export const pageQuery = graphql`
     }
   }
 `
-
-
-
-
-
-// <Slide className="slide project_slide" key={slide.title}>
-//   <div>
-//     <h3 className="is-size-4 is-uppercase has-text-weight-bold">{slide.title}</h3>
-//   </div>
-// </Slide>
-
-{/* <nav class="project_nav">
-{frontmatter.projectList.map(project => (
-  <div>{project.title}</div>
-))}
-</nav>
-<ProjectSlider
-slides={frontmatter.projectList}
-/> */}
