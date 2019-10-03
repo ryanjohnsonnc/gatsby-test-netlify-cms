@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import HomeCardsMobile from '../components/HomeCardsMobile'
 import HomeCards from '../components/HomeCards'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 class IndexPageTemplate extends React.Component {
   constructor(){
@@ -48,9 +49,14 @@ class IndexPageTemplate extends React.Component {
               <button className="button is-primary first" onClick={this.toggleCards}>
                 Learn More
               </button>
-              <Link className="button is-primary is-hollow" to="/about">
+              <AniLink 
+                cover 
+                direction="left"
+                bg="rebeccapurple"
+                className="button is-primary is-hollow" 
+                to="/project-gallery">
                 See Projects
-              </Link>
+              </AniLink>
             </header>
           </div>
 
@@ -72,9 +78,14 @@ class IndexPageTemplate extends React.Component {
 
           <div className="indexPage_about-callout">
             <span className="is-size-6 has-color-grey-dark bannered"><span>Want to learn more about the company?</span></span>
-            <Link className="is-size-7 has-text-weight-bold is-uppercase has-color-grey-dark" to="/about">
+            <AniLink 
+              cover 
+              direction="left"
+              bg="rebeccapurple"
+              className="is-size-7 has-text-weight-bold is-uppercase has-color-grey-dark" 
+              to="/about">
               About Us
-            </Link>
+            </AniLink>
           </div>
         </div>
       </div>

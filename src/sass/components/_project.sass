@@ -79,6 +79,11 @@
     overflow: hidden;
     @include transition(all .3s ease);
 
+
+    &.slide--last
+      width: 600px;
+      border-right: 0px;
+
     .project_slide-wrapper
       position: relative;
     
@@ -138,12 +143,14 @@
     text-transform: uppercase;
     font-weight: 700;
     margin-left: 12px;
+    color: $body-color;
     @include transition(all .3s ease);
   
   &:hover,
   &:focus 
     .text 
       margin-left: 20px;
+      color: $pink;
 
 .c_projectSlider
   display: block;
@@ -185,6 +192,10 @@
     border-right: 1px solid $grey-lighter;
     text-align: right;
     overflow: hidden;
+
+    &.slide--last 
+      width: 600px;
+      border-right: 0px;
 
     .slide_image-wrapper
       text-align: right;

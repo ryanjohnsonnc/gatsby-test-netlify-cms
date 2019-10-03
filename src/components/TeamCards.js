@@ -12,6 +12,7 @@ const modalStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
+    maxWidth              : '600px',
     transform             : 'translate(-50%, -50%)'
   }
 };
@@ -97,7 +98,7 @@ class TeamCards extends React.Component {
               isOpen={this.state.modalIsOpen}
               onRequestClose={this.closeModal}
               style={modalStyles}
-              contentLabel="Example Modal"
+              contentLabel="Team Modal"
             >
 
               <h2 className="title">{this.state.name}</h2>

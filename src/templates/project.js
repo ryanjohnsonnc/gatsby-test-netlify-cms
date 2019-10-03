@@ -43,8 +43,8 @@ export default class Project extends React.Component {
       <Layout>
         <div className={`page c_project page_title--left is-flex`}>
           <div className="container">
-            <div className="columns is-flex">
-              <div className={`column is-3 page_title has-background-black show-subnav--${this.state.projectOpen}`}>
+            <div className="columns">
+              <div className={`column is-3 page_title has-background-black show-subnav--${this.state.projectOpen}  ${this.state.project}`}>
                 <h1 className="is-size-1 has-text-weight-bold has-text-white main-title">{frontmatter.title}</h1>
                 <div className="page_subnav">
                   <h1 className="is-size-4 has-text-weight-bold has-text-white">{frontmatter.title}</h1>
@@ -52,7 +52,7 @@ export default class Project extends React.Component {
                   {frontmatter.projectList.map((project, i) => (
                     <button 
                       data-project={i} 
-                      className={`page_title-nav-item is-size-6 ${this.state.project === i ? 'active' : ''}`}
+                      className={`page_title-nav-item is-size-6 ${this.state.project == i ? 'active' : ''}`}
                       onClick={this.changeProject}
                     >
                       {project.title}
@@ -96,8 +96,24 @@ export class ProjectsList extends React.Component {
   constructor(props) {
     super(props)
     this.state = { 
-
+      show: false
     }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+        this.setState({
+        show: true
+      })
+    }, 1000);
+  }
+
+  componentDidUnmount() {
+    setTimeout(() => {
+        this.setState({
+        show: false
+      })
+    }, 0);
   }
 
   sendData = (e) => {
@@ -105,11 +121,13 @@ export class ProjectsList extends React.Component {
   }
 
   goToProjects = e => {
-    window.location = '/projects'
+    window.location = '/project-gallery'
   }
   render() {
+    const componentClasses = ['c_projectsList'];
+    if (this.state.show) { componentClasses.push('show'); }
     return (
-      <div className="c_projectsList">
+      <div className={componentClasses.join(' ')}>
         <HorizontalScroll
           reverseScroll = {true}
           className     = {"project_wrapper"}
@@ -130,12 +148,18 @@ export class ProjectsList extends React.Component {
               </div>
             </div>
           ))}
+
+          <div className="project_slide slide--last" key="999">
+            <div className="project_slide-wrapper">
+              
+            </div>
+          </div> 
         </HorizontalScroll>
 
         <AniLink 
           cover
           direction="right"
-          to="/projects" 
+          to="/project-gallery" 
           className={`projectSlider_back`}
           title="Back To Projects"
         >
@@ -171,6 +195,12 @@ export class ProjectSlider extends React.Component {
               </figure>
             </div>  
           ))}
+
+          <div className="slide slide--last" key="999">
+            <figure className="slide_image-wrapper">
+              
+            </figure>
+          </div>  
         </HorizontalScroll>
         
         <button 

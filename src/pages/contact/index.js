@@ -41,7 +41,7 @@ export default class Index extends React.Component {
           <div className="container">
             <div className="columns is flex">
               <div className="column is-3 page_title has-background-black">
-                <h1 className="is-size-1 has-text-weight-bold has-text-white">CONTACT US FOR MORE INFO</h1>
+                <h1 className="is-size-1 main-title has-text-weight-bold has-text-white">CONTACT US FOR MORE INFO</h1>
               </div>
               <div className="column is-9 page_content">
                 <div className="content">

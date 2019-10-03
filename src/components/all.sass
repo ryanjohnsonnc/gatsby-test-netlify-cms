@@ -17,6 +17,7 @@ $white-ter: rgba(247, 247, 247, 1); // ##F7F7F7
 
 $primary: $pink
 $primary-invert: white
+$link: $primary;
 $body-color: #333
 $black: #000
 
@@ -133,6 +134,7 @@ $menu-label-color: $white-ter
 @import "../sass/utilities/flexbox"
 @import "../sass/utilities/mixins"
 @import "../sass/utilities/helpers"
+@import "../sass/utilities/animations"
 
 @import "../sass/templates/index"
 
@@ -191,6 +193,7 @@ footer.global
 
 // Page Titles
 .page 
+  background-color: white;
   position: relative
 
   & > .container 
@@ -231,10 +234,10 @@ footer.global
         .main-title
           position: absolute;
           z-index: 8;
-          top: 50%;
-          left: -140px;
           width: 443px;
-          @include transform(rotate(-90deg) translateY(-50%));
+          text-align: left;
+          @include transform(rotate(-90deg) translateX(-110%));
+          @include transform-origin(0 0);
       .page_content
         padding: 120px 1.5rem;
     
@@ -316,6 +319,7 @@ section.record
   .page_content
     @include align-items(center);
     @include justify-content(center);
+    height: 100vh;
     .content
       max-width: 500px;
       margin: 0px auto;

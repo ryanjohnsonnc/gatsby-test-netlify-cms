@@ -5,16 +5,21 @@ import HorizontalScroll from 'react-scroll-horizontal'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 class ProjectCategories extends React.Component {
-  slideImageStyle = (src) => ({
-    backgroundImage: 'url(' + src + ')'
-  })
-
+  constructor(props) {
+    super(props)
+    this.state = { 
+      show: false
+    }
+  }
+  
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    
+    const componentClasses = ['c_projectCategories'];
+    if (this.state.show) { componentClasses.push('show'); }
+
     return (
-      <div className="c_projectCategories">
+      <div className={componentClasses.join(' ')}>
         <HorizontalScroll
           reverseScroll = {true}
           className     = {"projectSlider_wrapper"}
@@ -22,24 +27,12 @@ class ProjectCategories extends React.Component {
         >
           {posts && posts.map(({ node: post }) => (
             <div className="slide">
-              <figure className="slide_image-wrapper">
-                <AniLink 
-                  cover 
-                  direction="left"
-                  bg="rebeccapurple" 
-                  className="slide_link" 
-                  to={`/${post.fields.slug}`}
-                  
-                >
-                  
-                </AniLink>
-                <span className="slide_title">{post.frontmatter.title}</span>
-                <div 
-                  className="slide_image" 
-                  style={this.slideImageStyle(post.frontmatter.featuredimage.childImageSharp.fluid.src)}
-                >
-                </div>
-              </figure>
+              <SlideContent
+                image={post.frontmatter.featuredimage.childImageSharp.fluid.src}
+                title={post.frontmatter.title}
+                slug={post.fields.slug}
+              />
+              
             </div>  
           ))}
 
@@ -60,6 +53,43 @@ ProjectCategories.propTypes = {
       edges: PropTypes.array,
     }),
   }),
+  show: 'React.PropTypes.bool',
+}
+
+
+export class SlideContent extends React.Component {
+  slideImageStyle = (src) => ({
+    backgroundImage: 'url(' + src + ')'
+  })
+  render() {
+    const slug = this.props.slug
+    return (
+      <figure className="slide_image-wrapper">
+        <AniLink 
+          cover 
+          direction="left"
+          bg="pink" 
+          className="slide_link" 
+          to={slug}
+          
+        >
+          
+        </AniLink>
+        <span className="slide_title">{this.props.title}</span>
+        <div 
+          className="slide_image" 
+          style={this.slideImageStyle(this.props.image)}
+        >
+        </div>
+      </figure>
+    )
+  }
+}
+
+SlideContent.propTypes = {
+  title: PropTypes.string,
+  image: PropTypes.string,
+  slug: PropTypes.string,
 }
 
 export default () => (

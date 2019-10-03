@@ -44,7 +44,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <AniLink 
-              swipe
+              paintDrip
               to="/" 
               className="navbar-item" 
               title="Logo"
@@ -70,7 +70,7 @@ const Navbar = class extends React.Component {
               <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/about">
                 About
               </AniLink>
-              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/projects">
+              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/project-gallery">
                 Projects
               </AniLink>
               <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/contact">
