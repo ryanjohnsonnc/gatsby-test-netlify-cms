@@ -159,6 +159,7 @@ export class ProjectsList extends React.Component {
         <AniLink 
           cover
           direction="right"
+          bg="#E0184E"
           to="/project-gallery" 
           className={`projectSlider_back`}
           title="Back To Projects"

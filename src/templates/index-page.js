@@ -46,13 +46,13 @@ class IndexPageTemplate extends React.Component {
             <header className="indexPage_header column is-6">
               <h1 className="is-size-4 is-uppercase has-text-weight-bold">{this.props.headline}</h1>
               <p>{this.props.intro}</p>
-              <button className="button is-primary first" onClick={this.toggleCards}>
+              <a className="button is-primary first" onClick={this.toggleCards}>
                 Learn More
-              </button>
+              </a>
               <AniLink 
                 cover 
-                direction="left"
-                bg="rebeccapurple"
+                direction="up"
+                bg="#E0184E"
                 className="button is-primary is-hollow" 
                 to="/project-gallery">
                 See Projects
@@ -60,11 +60,11 @@ class IndexPageTemplate extends React.Component {
             </header>
           </div>
 
-          <button 
+          <a 
             className={`homeCards_close arrow-${this.state.cardsOpen}`}
             onClick={this.toggleCards}
           >
-          </button>
+          </a>
 
           <HomeCardsMobile
             cards={this.props.cards}

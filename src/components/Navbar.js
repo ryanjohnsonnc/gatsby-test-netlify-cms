@@ -44,10 +44,12 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <AniLink 
-              paintDrip
+              cover
               to="/" 
+              bg="#E0184E"
               className="navbar-item" 
               title="Logo"
+              direction="right"
             >
               <img src={logo} alt="xpodigital" className={`${this.state.navBarActiveClass}`} style={{ width: '169px' }} />
             </AniLink>
@@ -67,13 +69,13 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start">
-              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/about">
+              <AniLink cover direction="up" bg="#E0184E" className="navbar-item has-text-weight-bold is-size-4" to="/about">
                 About
               </AniLink>
-              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/project-gallery">
+              <AniLink cover direction="up" bg="#E0184E" className="navbar-item has-text-weight-bold is-size-4" to="/project-gallery">
                 Projects
               </AniLink>
-              <AniLink cover direction="up" bg="rebeccapurple" className="navbar-item has-text-weight-bold is-size-4" to="/contact">
+              <AniLink cover direction="up" bg="#E0184E" className="navbar-item has-text-weight-bold is-size-4" to="/contact">
                 Contact
               </AniLink>
             </div>

@@ -103,12 +103,12 @@ export class HomeCard extends React.Component {
             ) : ( // The single card is not open
               <div className="card_content--closed">
                 <p>{this.props.quote}</p>
-                <button 
+                <a 
                   onClick={this.toggleSingleCard}
                   className="button is-primary is-thin"
                 >
                   Explore More
-                </button>
+                </a>
               </div>
             )}
           </div>

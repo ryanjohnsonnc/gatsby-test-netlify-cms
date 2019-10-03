@@ -68,10 +68,9 @@ export class SlideContent extends React.Component {
         <AniLink 
           cover 
           direction="left"
-          bg="pink" 
+          bg="#E0184E"
           className="slide_link" 
-          to={slug}
-          
+          to={slug}  
         >
           
         </AniLink>
