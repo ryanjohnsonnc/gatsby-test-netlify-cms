@@ -80,8 +80,8 @@ class IndexPageTemplate extends React.Component {
             <span className="is-size-6 has-color-grey-dark bannered"><span>Want to learn more about the company?</span></span>
             <AniLink 
               cover 
-              direction="left"
-              bg="rebeccapurple"
+              direction="up"
+              bg="#E0184E"
               className="is-size-7 has-text-weight-bold is-uppercase has-color-grey-dark" 
               to="/about">
               About Us
