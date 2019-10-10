@@ -1,12 +1,11 @@
 ---
 templateKey: index-page
-title: We don't just deploy signage systems
+title: Unlocking the power of digital signage since 2000
 description: >-
-  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-  doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-  ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-  consequuntur magni dolores eos qui ratione voluptatem.
+  At Xpodigital, we deliver flexible, scalable, and groundbreaking custom
+  signage systems. With our technology, you can provide targeted, unified
+  content to your guests that takes them on a journey – one that informs them,
+  persuades them, compels them to act, or takes their breath away.
 solutionCards:
   - solution: Creative Approach
     solutionImage: /img/flavor_wheel.jpg
@@ -40,11 +39,12 @@ solutionCards:
           craft compelling systems that promise to engage and impact your
           customers.
         title: Fifth Name
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
     solutionShort: >-
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-    solutionQuote: >-
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
   - solution: Creative Depproach
     solutionImage: /img/blog-index.jpg
     solutionInfo:
@@ -66,11 +66,12 @@ solutionCards:
           craft compelling systems that promise to engage and impact your
           customers.
         title: Title Three
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
     solutionShort: >-
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-    solutionQuote: >-
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
   - solution: Creative Reproach
     solutionImage: /img/blog-index.jpg
     solutionInfo:
@@ -86,10 +87,11 @@ solutionCards:
           craft compelling systems that promise to engage and impact your
           customers.
         title: Second Title
+    solutionQuote: >-
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+      doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
     solutionShort: >-
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
       doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
-    solutionQuote: >-
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.
 ---
 
